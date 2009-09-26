@@ -1,0 +1,52 @@
+application: dar
+version: 2
+runtime: python
+api_version: 1
+
+# http://code.google.com/appengine/docs/python/config/appconfig.html
+
+handlers:
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  secure: optional
+  login: admin
+
+- url: /console/static
+  static_dir: console/app/view/static
+  secure: optional
+
+- url: /console.*
+  script: console/app/console.py
+  secure: optional
+  login: admin
+
+- url: /favicon.ico
+  static_files: media/images/favicon.ico
+  upload: media/images/favicon.ico
+  secure: optional
+
+- url: /media/admin
+  static_dir: common/django_aep_export/admin_media/media
+  secure: optional
+
+- url: /media
+  static_dir: media
+  secure: optional
+
+- url: /.*
+  script: common/appenginepatch/main.py
+  secure: optional
+
+skip_files:
+# defaults
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+# additional
+- ^(.*/)?submodules/.*

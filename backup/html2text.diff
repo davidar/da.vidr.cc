@@ -1,0 +1,44 @@
+--- html2text.orig.py	2009-09-25 15:45:39.000000000 +1000
++++ html2text.py	2009-06-20 15:26:59.000000000 +1000
+@@ -152,6 +152,7 @@
+         self.blockquote = 0
+         self.pre = 0
+         self.startpre = 0
++        self.prelang = None
+         self.lastWasNL = 0
+         self.abbr_title = None # current abbreviation definition
+         self.abbr_data = None # last inner HTML (for abbr being defined)
+@@ -327,6 +328,8 @@
+         if tag == 'td': self.pbr()
+         
+         if tag == "pre":
++            attrsD = dict(attrs or [])
++            self.prelang = attrsD.get("lang")
+             if start:
+                 self.startpre = 1
+                 self.pre = 1
+@@ -350,10 +353,6 @@
+                     data = data[1:]
+             if not data and not force: return
+             
+-            if self.startpre:
+-                #self.out(" :") #TODO: not output when already one there
+-                self.startpre = 0
+-            
+             bq = (">" * self.blockquote)
+             if not (force and data and data[0] == ">") and self.blockquote: bq += " "
+             
+@@ -361,6 +360,13 @@
+                 bq += "    "
+                 data = data.replace("\n", "\n"+bq)
+             
++            if self.startpre:
++                #self.out(" :") #TODO: not output when already one there
++                if self.prelang:
++                    data = ":::" + self.prelang + "\n" + bq + data
++                    self.prelang = None
++                self.startpre = 0
++            
+             if self.start:
+                 self.space = 0
+                 self.p_p = 0

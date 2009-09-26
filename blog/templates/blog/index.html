@@ -1,0 +1,10 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% load blog_tags %}
+{% blog_post_index posts.object_list %}
+{% pagination posts %}
+{% endblock %}
+

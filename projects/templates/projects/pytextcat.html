@@ -1,0 +1,13 @@
+<p>The text</p>
+<blockquote><p>{{ text }}</p></blockquote>
+<p>is probably <strong>{{ ans }}</strong>.</p>
+<p>Full ranking information is given below:</p>
+
+<table class="centred">
+<tr><th>Language</th><th>Score</th></tr>
+{% for lang,rank in ranks %}
+<tr><th>{{ lang }}</th><td class="textalignright">{{ rank }}% worse than best score</td></tr>
+{% endfor %}
+</table>
+
+<hr />

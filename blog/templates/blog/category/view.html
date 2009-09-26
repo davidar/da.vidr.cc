@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{{ category.title }}{% endblock %}
+
+{% block content %}
+<h3>Archive for the '{{ category.title }}' category</h3>
+
+{% if subcategories %}
+<p>See posts in subcategories of {{ category.title }}:</p>
+<ul>
+{% for subcat in subcategories %}
+    <li><a href="{{ subcat.get_absolute_url }}">{{ subcat.title }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% load blog_tags %}
+{% blog_post_index posts.object_list %}
+
+{% pagination posts category.get_absolute_url %}
+
+{% endblock %}
+

@@ -1,0 +1,28 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Edit Post{% endblock %}
+
+{% block content %}
+
+<h3>Edit Post</h3>
+
+<form action="" method="post" class="fullwidth">
+    <table class="fullwidth">
+        {{ form }}
+        <tr><td></td><td>
+            <input type="submit" name="submit" value="Submit" />
+            <input type="submit" name="submit" value="Preview" />
+        </td></tr>
+    </table>
+</form>
+
+<script type="text/javascript">$('#id_content').width('100%').EnableTabs()</script>
+
+{% if preview %}
+<br class="clear" />
+{% load blog_tags %}
+{% blog_post preview %}
+{% endif %}
+
+{% endblock %}
+

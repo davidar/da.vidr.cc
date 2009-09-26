@@ -1,0 +1,26 @@
+{% extends "pages/base.html" %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% load tabs %}
+{% block topnav %}
+{% activetab page.root %}
+{{ block.super }}
+{% endblock %}
+
+{% block head %}
+{% if page.description %}
+<meta name="description" content="{{ page.description }}" />
+{% endif %}
+{% endblock%}
+
+{% block content %}
+<h3>{{ page.title }}</h3>
+{% if page.description %}<p>{{ page.description }}</p>{% endif %}
+<ul>
+    {% for child in children %}
+    <li><a href="{{ child.get_absolute_url }}">{{ child.title }}</a>{% if child.description %}: {{ child.description }}{% endif %}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Import{% endblock %}
+
+{% block content %}
+<h3>Import</h3>
+{% if message %}
+{{ message|linebreaks }}
+{% endif %}
+<form action="" method="post" enctype="multipart/form-data">
+{{ form.as_p }}
+<input type="submit" />
+</form>
+{% endblock %}
+

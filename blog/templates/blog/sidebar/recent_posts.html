@@ -1,0 +1,8 @@
+{% if posts %}
+<ul class="links">
+    {% for post in posts %}
+    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+

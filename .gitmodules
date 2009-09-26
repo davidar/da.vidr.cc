@@ -1,0 +1,21 @@
+[submodule "submodules/django-disqus"]
+	path = submodules/django-disqus
+	url = git://github.com/arthurk/django-disqus.git
+[submodule "submodules/pytextcat"]
+	path = submodules/pytextcat
+	url = git://github.com/davidar/pytextcat.git
+[submodule "submodules/app-engine-console"]
+	path = submodules/app-engine-console
+	url = git://github.com/davidar/app-engine-console.git
+[submodule "submodules/django-tabs"]
+	path = submodules/django-tabs
+	url = git://github.com/davidar/django-tabs.git
+[submodule "submodules/django-helloworld"]
+	path = submodules/django-helloworld
+	url = git://github.com/davidar/django-helloworld.git
+[submodule "submodules/django-recurse"]
+	path = submodules/django-recurse
+	url = git://github.com/davidar/django-recurse.git
+[submodule "submodules/django-quotes"]
+	path = submodules/django-quotes
+	url = git://github.com/davidar/django-quotes.git
