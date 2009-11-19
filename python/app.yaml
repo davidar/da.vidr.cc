@@ -49,4 +49,4 @@ skip_files:
 - ^(.*/)?.*/RCS/.*
 - ^(.*/)?\..*
 # additional
-- ^(.*/)?submodules/.*
+#- ^(.*/)?submodules/.*
