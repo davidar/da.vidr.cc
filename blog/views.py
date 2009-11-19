@@ -24,7 +24,7 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 
 from google.appengine.ext import db
 
-from util import admin, slugify, md_convert, split_url, flush_cache
+from cc.vidr.util import admin, slugify, md_convert, split_url, flush_cache
 from blog.models import Post, PostForm, Category, CategoryForm
 from blog.ping import ping_all_search_engines, pingomatic
 

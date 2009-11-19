@@ -17,7 +17,7 @@ import re
 
 from django import http, shortcuts
 
-from util import admin, md_convert, split_url, flush_cache, call_fn
+from cc.vidr.util import admin, md_convert, split_url, flush_cache, call_fn
 from pages.models import Page, PageForm
 
 def get_page(url):
@@ -31,7 +31,7 @@ def get_page(url):
 
 def process_incudes(page, request):
     page.content_html = re.sub(
-        r'<p>\${([a-zA-Z0-9.]*)}</p>',
+        r'<p>\$\(([a-zA-Z0-9.]*)\)</p>',
         lambda matchobj: call_fn(matchobj.group(1), request),
         page.content_html)
 

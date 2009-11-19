@@ -13,9 +13,16 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.template.loader import render_to_string
+from cc.vidr.jasminlexer import JasminLexer
 
-from util import humanize_list
+import re
+from urllib import urlopen, urlencode
+from xml.etree.ElementTree import parse
+
+from django.template.loader import render_to_string
+from django.conf import settings
+
+from cc.vidr.util import humanize_list
 
 from pytextcat import classify
 
@@ -39,4 +46,36 @@ def pytextcat(request):
     
     return render_to_string('projects/pytextcat.html',
         {'text': text, 'ans': ans, 'ranks': ranks})
+
+def dejava(request):
+    if not request.POST or 'source' not in request.POST \
+                        or 'classname' not in request.POST:
+        return render_to_string('projects/dejava.html')
+    
+    source = request.POST['source'].strip()
+    lines = source.split('\n')
+    classname = request.POST['classname']
+    
+    root = parse(urlopen(
+        "http://" + settings.JAVA_DOMAIN + "/projects/dejava/",
+        urlencode({'source': source, 'classname': classname}))).getroot()
+    errors = []
+    for error in root.findall('errors/error'):
+        errors.append(error.text.strip())
+    warnings = []
+    for warning in root.findall('warnings/warning'):
+        warnings.append(warning.text.strip())
+    classes = {}
+    for cls in root.findall('classes/class'):
+        classes[cls.get('classname')] = cls.text.strip()
+    
+    def inject_java_source(matchobj):
+        line = int(matchobj.group(1))
+        return ';' + lines[line-1] + '\n' + matchobj.group(0)
+    for name,cls in classes.iteritems():
+        classes[name] = re.sub(r'.*\.line\s+([0-9]+)', inject_java_source, cls)
+    
+    return render_to_string('projects/dejava.html',
+        {'source': source, 'classname': classname,
+         'errors': errors, 'warnings': warnings, 'classes': classes})
 

@@ -3,7 +3,7 @@ it straight to App Engine without any modifications.
 
 At least the following files will need to be modified/personalised:
 - blog/models.py: BlogFeed.title
-- util.py: OverrideSiteIDMiddleware.process_request: domain
+- cc/vidr/util.py: OverrideSiteIDMiddleware.process_request: domain
 - app.yaml
 - robots.txt
 - templates/{base,footer,head,sidebar,tracking}.html

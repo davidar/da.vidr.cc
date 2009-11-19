@@ -19,3 +19,6 @@
 [submodule "submodules/django-quotes"]
 	path = submodules/django-quotes
 	url = git://github.com/davidar/django-quotes.git
+[submodule "submodules/django-codehilite"]
+	path = submodules/django-codehilite
+	url = git://github.com/davidar/django-codehilite.git

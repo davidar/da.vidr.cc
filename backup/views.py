@@ -28,7 +28,7 @@ from django import http, shortcuts, forms
 from appenginepatcher import appid
 from aecmd import PROJECT_DIR, COMMON_DIR
 
-from util import admin, md_convert, flush_cache
+from cc.vidr.util import admin, md_convert, flush_cache
 from blog.models import Post, Category
 from pages.models import Page
 

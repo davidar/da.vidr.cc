@@ -1,11 +1,13 @@
 {% extends "blog/base.html" %}
 
+{% load codehilite %}
+
 {% block title %}Ping results{% endblock %}
 
 {% block content %}
 {% for site, data in output.items %}
 <h3>{{ site }}</h3>
-<pre>{{ data }}</pre>
+<pre>{{ data|codehilite:"html" }}</pre>
 {% endfor %}
 {% endblock %}
 

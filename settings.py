@@ -1,8 +1,6 @@
 from ragendja.settings_pre import *
-
-# SECRET_KEY, DISQUS_WEBSITE_SHORTNAME, DISQUS_API_KEY, GOOGLE_ANALYTICS_ID,
-# DEFAULT_FROM_EMAIL
-from settings_private import *
+from settings_private import SECRET_KEY, DISQUS_WEBSITE_SHORTNAME, \
+    DISQUS_API_KEY, GOOGLE_ANALYTICS_ID, DEFAULT_FROM_EMAIL, JAVA_DOMAIN
 
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
@@ -34,7 +32,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'ragendja.sites.dynamicsite.DynamicSiteIDMiddleware',
-    'util.OverrideSiteIDMiddleware',
+    'cc.vidr.util.OverrideSiteIDMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 )
@@ -69,6 +67,7 @@ INSTALLED_APPS = (
     # template tags
     'helloworld',
     'quotes',
+    'codehilite',
     
     # views
     'projects',

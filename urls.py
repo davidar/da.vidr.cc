@@ -16,17 +16,19 @@ urlpatterns = auth_patterns + patterns('',
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
         {'feed_dict': {'blog': BlogFeed}}),
     
-    (r'^google617b8218f69f98a2.html$', 'util.dummy_view'), # d@vidr.cc
-    (r'^googlea23819e3375b5c52.html$', 'util.dummy_view'), # dvdr18@gmail.com
-    (r'^LiveSearchSiteAuth.xml$', 'util.dummy_view',
+    (r'^google617b8218f69f98a2.html$', 'cc.vidr.util.dummy_view'),
+    (r'^googlea23819e3375b5c52.html$', 'cc.vidr.util.dummy_view'),
+    (r'^LiveSearchSiteAuth.xml$', 'cc.vidr.util.dummy_view',
         {'output': '<?xml version="1.0"?>\n<users>\n'
                    '<user>5C6F26063F93958A50C0EE134949F0B9</user>\n'
                    '</users>\n',
          'mimetype': 'application/xml'}),
-    (r'^y_key_2916d2d19e6cfb1a.html$', 'util.dummy_view',
+    (r'^y_key_2916d2d19e6cfb1a.html$', 'cc.vidr.util.dummy_view',
         {'output': '3fc5855b0a114b46\n', 'mimetype': 'text/plain'}),
-        
-    (r'^rpc_relay.html$', 'util.dummy_view',
+    
+    (r'^blank.html$', 'cc.vidr.util.dummy_view'),
+    
+    (r'^rpc_relay.html$', 'cc.vidr.util.dummy_view',
         {'output': '<html><head><script type="text/javascript" '
          'src="http://www.google.com/friendconnect/script/rpc_relay.js">'
          '</script></head></html>'}),
@@ -41,11 +43,12 @@ urlpatterns = auth_patterns + patterns('',
     #(r'^avatar.png$', 'django.views.generic.simple.redirect_to', # 80x80
     #    {'url': 'http://i36.photobucket.com/albums/e36/nemti/avatar.png'}),
     
-    (r'^jsmath/fonts/(.*)$', 'util.zipserve',
+    (r'^jsmath/fonts/(.*)$', 'cc.vidr.util.zipserve',
         {'zipfilename': 'jsMath-fonts-1.3', 'prefix': 'jsMath/fonts'}),
-    (r'^jsmath/(.*)$', 'util.zipserve',
+    (r'^jsmath/(.*)$', 'cc.vidr.util.zipserve',
         {'zipfilename': 'jsMath-3.6b', 'prefix': 'jsMath'}),
-    (r'^colorpicker/(.*)$', 'util.zipserve', {'zipfilename': 'colorpicker'}),
+    (r'^colorpicker/(.*)$', 'cc.vidr.util.zipserve',
+        {'zipfilename': 'colorpicker'}),
     
     (r'^export.json$', 'backup.views.export_json'),
     (r'^source.zip$', 'backup.views.export_source_zip'),

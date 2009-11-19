@@ -22,20 +22,17 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
-# Unused in query history -- copied from input.
 - kind: blog_post
   properties:
   - name: category
   - name: date
     direction: desc
 
-# Unused in query history -- copied from input.
 - kind: blog_post
   properties:
   - name: slug
   - name: date
 
-# Used 2 times in query history.
 - kind: pages_page
   properties:
   - name: parent_page

@@ -60,4 +60,7 @@ quotes = (
      'Leonard Adleman', 'http://www.nytimes.com/1994/12/13/science/'
      'scientist-at-work-leonard-adleman'
      '-hitting-the-high-spots-of-computer-theory.html?pagewanted=2'),
+    (u'When two trains approach each other at a crossing, both shall come to '
+     u'a full stop and neither shall start up again until the other has gone.',
+     'Kansas Legislature', 'http://en.wikipedia.org/wiki/Deadlock'),
 )
