@@ -2,21 +2,21 @@ This project is not intended to work out-of-the-box - don't clone it and upload
 it straight to App Engine without any modifications.
 
 At least the following files will need to be modified/personalised:
-- blog/models.py: BlogFeed.title
-- cc/vidr/util.py: OverrideSiteIDMiddleware.process_request: domain
-- app.yaml
-- robots.txt
-- templates/{base,footer,head,sidebar,tracking}.html
-- templates/xrds.xml
+- python/blog/models.py: BlogFeed.title
+- python/cc/vidr/util.py: OverrideSiteIDMiddleware.process_request: domain
+- python/app.yaml
+- python/templates/{base,footer,head,sidebar,tracking}.html
+- python/templates/robots.txt
+- python/templates/xrds.xml
 - media/images/*
 
-A settings_private.py file will need to be created, containing the variables
-listed at the top of settings.py.
+A python/settings_private.py file will need to be created, containing the
+variables listed at the top of python/settings.py.
 
-The following files need to be downloaded into common/zip-packages/:
+The following files need to be downloaded into python/common/zip-packages/:
 - http://bitbucket.org/gumptioncom/appenginepatch-sample/raw/d0f6cfe01916/common/zip-packages/django-1.1.zip
 
-The following files need to be downloaded into common/zip-media/:
+The following files need to be downloaded into python/common/zip-media/:
 - http://downloads.sourceforge.net/project/jsmath/jsMath/3.6b/jsMath-3.6b.zip
 - http://downloads.sourceforge.net/project/jsmath/jsMath%20Image%20Fonts/1.3/jsMath-fonts-1.3.zip
 - http://www.eyecon.ro/colorpicker/colorpicker.zip
