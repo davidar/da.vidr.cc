@@ -1,0 +1,16 @@
+appengine-api-1.0-sdk-1.2.6.jar
+appengine-api-labs-1.2.6.jar
+bsh-2.0b4.jar
+classfileanalyzer-0.7.0.jar
+commons-jci-core-1.1-SNAPSHOT.jar
+commons-jci-eclipse-1.1-SNAPSHOT.jar
+commons-lang-2.4.jar
+commons-logging-1.1.1.jar
+datanucleus-appengine-1.0.3.jar
+datanucleus-core-1.1.5.jar
+datanucleus-jpa-1.1.5.jar
+ecj-3.5.1.jar
+geronimo-jpa_3.0_spec-1.1.1.jar
+geronimo-jta_1.1_spec-1.1.1.jar
+jdo2-api-2.3-eb.jar
+resin-4.0.0.jar

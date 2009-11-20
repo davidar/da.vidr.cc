@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Admin-only</web-resource-name>
+			<url-pattern>/admin/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<servlet>
+		<servlet-name>Quercus</servlet-name>
+		<servlet-class>com.caucho.quercus.servlet.GoogleQuercusServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DejaVa</servlet-name>
+		<servlet-class>cc.vidr.dejava.DejaVaServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Bsh</servlet-name>
+		<servlet-class>bsh.servlet.BshServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Quercus</servlet-name>
+		<url-pattern>*.php</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DejaVa</servlet-name>
+		<url-pattern>/projects/dejava/</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Bsh</servlet-name>
+		<url-pattern>/admin/console/</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>

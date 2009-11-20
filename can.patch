@@ -1,0 +1,426 @@
+diff -u -r a/src/classfileanalyzer/attributes/AnnotationDefault.java b/src/classfileanalyzer/attributes/AnnotationDefault.java
+--- a/src/classfileanalyzer/attributes/AnnotationDefault.java	2009-11-19 19:21:46.000000000 +1000
++++ b/src/classfileanalyzer/attributes/AnnotationDefault.java	2009-11-19 19:22:08.000000000 +1000
+@@ -31,7 +31,7 @@
+     
+     
+     
+-    public AnnotationDefault(int[] AnnotationDefault_attribute, ConstantPool cp, int indent) {
++    public AnnotationDefault(int[] AnnotationDefault_attribute, ConstantPool cp, int indent) throws ClassFormatError {
+         this.AnnotationDefault_attribute = AnnotationDefault_attribute;
+         this.cp = cp;
+         this.indent = indent;
+@@ -43,7 +43,7 @@
+     
+     
+     
+-    public void parse() {
++    public void parse() throws ClassFormatError {
+         int i;
+         
+         attribute_name_index = (AnnotationDefault_attribute[0] << 8)  | 
+diff -u -r a/src/classfileanalyzer/attributes/AnnotationHelper.java b/src/classfileanalyzer/attributes/AnnotationHelper.java
+--- a/src/classfileanalyzer/attributes/AnnotationHelper.java	2009-11-19 19:21:46.000000000 +1000
++++ b/src/classfileanalyzer/attributes/AnnotationHelper.java	2009-11-19 19:22:08.000000000 +1000
+@@ -10,6 +10,7 @@
+ 
+ 
+ import classfileanalyzer.*;
++
+ import java.util.*;
+ import static classfileanalyzer.Main.lt;
+ 
+@@ -53,7 +54,7 @@
+     
+     
+     
+-    public void annotation() {
++    public void annotation() throws ClassFormatError {
+         
+         // ANNOTATION_DEFAULT switch
+         if ((annotationPolicy != ANNOTATION_DEFAULT) || (nestedAnnotation == true)) {
+@@ -182,7 +183,7 @@
+     
+     
+     
+-    public void element_value(int tag) {
++    public void element_value(int tag) throws ClassFormatError {
+                
+         int const_value_index;
+         int type_name_index;
+@@ -502,8 +503,8 @@
+                     int tagArray = annotations[pointerAnnotations];
+                     pointerAnnotations = pointerAnnotations + 1; 
+                     if (tagArray != tag) {
+-                        System.out.println("Clara: internal error, annotation, array_value!");
+-                        System.exit(1);
++                        throw new ClassFormatError(
++                                "Clara: internal error, annotation, array_value!");
+                     }
+                 }
+                 element_value(tag);
+diff -u -r a/src/classfileanalyzer/attributes/Code.java b/src/classfileanalyzer/attributes/Code.java
+--- a/src/classfileanalyzer/attributes/Code.java	2009-11-19 19:21:46.000000000 +1000
++++ b/src/classfileanalyzer/attributes/Code.java	2009-11-19 19:22:08.000000000 +1000
+@@ -10,6 +10,7 @@
+ 
+ 
+ import classfileanalyzer.*;
++
+ import java.util.*;
+ import static classfileanalyzer.Main.lt;
+ 
+@@ -43,7 +44,7 @@
+     
+     
+     
+-    public Code(int[] Code_attribute, ConstantPool cp) {
++    public Code(int[] Code_attribute, ConstantPool cp) throws ClassFormatError {
+         this.Code_attribute = Code_attribute;
+         this.cp = cp;
+         sourceText = new StringBuffer();
+@@ -55,7 +56,7 @@
+     
+     
+     
+-    public void parse() {
++    public void parse() throws ClassFormatError {
+              
+         int i;
+         int tag;
+@@ -636,8 +637,7 @@
+             }
+                        
+             if (operandCount == -2) { // instructions: xxxunusedxxx, breakpoint
+-                System.out.println("Error: opcode, operand bytes.");
+-                System.exit(1);
++                throw new ClassFormatError("Error: opcode, operand bytes.");
+             }
+            
+             sourceText.append(lt);
+diff -u -r a/src/classfileanalyzer/attributes/RuntimeInvisibleAnnotations.java b/src/classfileanalyzer/attributes/RuntimeInvisibleAnnotations.java
+--- a/src/classfileanalyzer/attributes/RuntimeInvisibleAnnotations.java	2009-11-19 19:21:46.000000000 +1000
++++ b/src/classfileanalyzer/attributes/RuntimeInvisibleAnnotations.java	2009-11-19 19:22:08.000000000 +1000
+@@ -10,7 +10,6 @@
+ 
+ 
+ import classfileanalyzer.*;
+-import java.util.*;
+ 
+ 
+ 
+@@ -34,7 +33,7 @@
+     
+     public RuntimeInvisibleAnnotations(int[] RuntimeInvisibleAnnotations_attribute, 
+                                        ConstantPool cp, 
+-                                       int indent) {
++                                       int indent) throws ClassFormatError {
+         this.RuntimeInvisibleAnnotations_attribute = RuntimeInvisibleAnnotations_attribute;
+         this.cp = cp;
+         this.indent = indent;
+@@ -46,7 +45,7 @@
+     
+     
+     
+-    public void parse() {
++    public void parse() throws ClassFormatError {
+         attribute_name_index = (RuntimeInvisibleAnnotations_attribute[0] << 8)  | 
+                                 RuntimeInvisibleAnnotations_attribute[1];
+         attribute_length =     (RuntimeInvisibleAnnotations_attribute[2] << 24) | 
+diff -u -r a/src/classfileanalyzer/attributes/RuntimeInvisibleParameterAnnotations.java b/src/classfileanalyzer/attributes/RuntimeInvisibleParameterAnnotations.java
+--- a/src/classfileanalyzer/attributes/RuntimeInvisibleParameterAnnotations.java	2009-11-19 19:21:46.000000000 +1000
++++ b/src/classfileanalyzer/attributes/RuntimeInvisibleParameterAnnotations.java	2009-11-19 19:22:08.000000000 +1000
+@@ -35,7 +35,7 @@
+    
+     public RuntimeInvisibleParameterAnnotations(int[] RuntimeInvisibleParameterAnnotations_attribute, 
+                                                 ConstantPool cp, 
+-                                                int indent) {
++                                                int indent) throws ClassFormatError {
+         this.RuntimeInvisibleParameterAnnotations_attribute = RuntimeInvisibleParameterAnnotations_attribute;
+         this.cp = cp;
+         this.indent = indent;
+@@ -47,7 +47,7 @@
+     
+     
+     
+-    public void parse() {
++    public void parse() throws ClassFormatError {
+         attribute_name_index = (RuntimeInvisibleParameterAnnotations_attribute[0] << 8)  | 
+                                 RuntimeInvisibleParameterAnnotations_attribute[1];
+         attribute_length =     (RuntimeInvisibleParameterAnnotations_attribute[2] << 24) | 
+diff -u -r a/src/classfileanalyzer/attributes/RuntimeVisibleAnnotations.java b/src/classfileanalyzer/attributes/RuntimeVisibleAnnotations.java
+--- a/src/classfileanalyzer/attributes/RuntimeVisibleAnnotations.java	2009-11-19 19:21:46.000000000 +1000
++++ b/src/classfileanalyzer/attributes/RuntimeVisibleAnnotations.java	2009-11-19 19:22:08.000000000 +1000
+@@ -33,7 +33,7 @@
+     
+     public RuntimeVisibleAnnotations(int[] RuntimeVisibleAnnotations_attribute, 
+                                      ConstantPool cp, 
+-                                     int indent) {
++                                     int indent) throws ClassFormatError {
+         this.RuntimeVisibleAnnotations_attribute = RuntimeVisibleAnnotations_attribute;
+         this.cp = cp;
+         this.indent = indent;
+@@ -45,7 +45,7 @@
+     
+     
+     
+-    public void parse() {
++    public void parse() throws ClassFormatError {
+         attribute_name_index = (RuntimeVisibleAnnotations_attribute[0] << 8)  | 
+                                 RuntimeVisibleAnnotations_attribute[1];
+         attribute_length =     (RuntimeVisibleAnnotations_attribute[2] << 24) | 
+diff -u -r a/src/classfileanalyzer/attributes/RuntimeVisibleParameterAnnotations.java b/src/classfileanalyzer/attributes/RuntimeVisibleParameterAnnotations.java
+--- a/src/classfileanalyzer/attributes/RuntimeVisibleParameterAnnotations.java	2009-11-19 19:21:46.000000000 +1000
++++ b/src/classfileanalyzer/attributes/RuntimeVisibleParameterAnnotations.java	2009-11-19 19:22:08.000000000 +1000
+@@ -35,7 +35,7 @@
+     
+     public RuntimeVisibleParameterAnnotations(int[] RuntimeVisibleParameterAnnotations_attribute, 
+                                               ConstantPool cp, 
+-                                              int indent) {
++                                              int indent) throws ClassFormatError {
+         this.RuntimeVisibleParameterAnnotations_attribute = RuntimeVisibleParameterAnnotations_attribute;
+         this.cp = cp;
+         this.indent = indent;
+@@ -47,7 +47,7 @@
+     
+     
+     
+-    public void parse() {
++    public void parse() throws ClassFormatError {
+         attribute_name_index = (RuntimeVisibleParameterAnnotations_attribute[0] << 8)  | 
+                                 RuntimeVisibleParameterAnnotations_attribute[1];
+         attribute_length =     (RuntimeVisibleParameterAnnotations_attribute[2] << 24) | 
+diff -u -r a/src/classfileanalyzer/Builder.java b/src/classfileanalyzer/Builder.java
+--- a/src/classfileanalyzer/Builder.java	2009-11-19 19:21:46.000000000 +1000
++++ b/src/classfileanalyzer/Builder.java	2009-11-19 19:22:08.000000000 +1000
+@@ -29,6 +29,21 @@
+     public Builder() {
+         buffer = new StringBuffer();
+     }
++    
++    
++    
++    
++    public void buildHeader(int[] minor_version, 
++                            int[] major_version,
++                            ConstantPool cp,
++                            int[] access_flags, 
++                            int[] this_class, 
++                            int[] super_class,
++                            Interfaces ifs,
++                            Attributes attr) throws ClassFormatError {
++        buildHeader(minor_version, major_version, cp, access_flags, this_class,
++                super_class, ifs, attr, true);
++    }
+         
+     
+     
+@@ -41,7 +56,8 @@
+                             int[] this_class, 
+                             int[] super_class,
+                             Interfaces ifs,
+-                            Attributes attr) {
++                            Attributes attr,
++                            boolean can_header) throws ClassFormatError {
+         
+         StringBuffer headerBuffer = new StringBuffer();
+         
+@@ -73,8 +89,6 @@
+         // BEGIN: attributes ClassFile
+         int attributes_count = attr.getAttributesCount();
+         int attribute_name_index;
+-        int attribute_length;
+-        
+         String attributeName;
+         
+                
+@@ -83,10 +97,6 @@
+          
+             attribute_name_index = (attribute_info[0] << 8)  | 
+                                     attribute_info[1];
+-            attribute_length =     (attribute_info[2] << 24) |
+-                                   (attribute_info[3] << 16) |
+-                                   (attribute_info[4] << 8)  |
+-                                    attribute_info[5];
+             cpConstant = cp.getConstant(attribute_name_index);
+             attributeName = Builder.getStringCONSTANT_Utf8(cpConstant);
+            
+@@ -248,17 +258,20 @@
+         // build assembler source text (header)
+         headerBuffer.append("; " + simpleNameClass + ".j" + lt);
+         headerBuffer.append(lt);
+-        headerBuffer.append("; Generated by ClassFileAnalyzer (Can)" + lt);
+-        headerBuffer.append("; Analyzer and Disassembler for Java class files" + lt);
+-        headerBuffer.append("; (Jasmin syntax 2, http://jasmin.sourceforge.net)" + lt);
+-        headerBuffer.append(";" + lt);
+-        headerBuffer.append("; ClassFileAnalyzer, version " + 
+-                            Version.majorVersion + "." +
+-                            Version.minorVersion + "." +
+-                            Version.updateVersion + " " +
+-                            Version.addVersion + lt);
+-        headerBuffer.append(lt);
+-        headerBuffer.append(lt);
++        
++        if(can_header) {
++            headerBuffer.append("; Generated by ClassFileAnalyzer (Can)" + lt);
++            headerBuffer.append("; Analyzer and Disassembler for Java class files" + lt);
++            headerBuffer.append("; (Jasmin syntax 2, http://jasmin.sourceforge.net)" + lt);
++            headerBuffer.append(";" + lt);
++            headerBuffer.append("; ClassFileAnalyzer, version " + 
++                                Version.majorVersion + "." +
++                                Version.minorVersion + "." +
++                                Version.updateVersion + " " +
++                                Version.addVersion + lt);
++            headerBuffer.append(lt);
++            headerBuffer.append(lt);
++        }
+         
+         // . bytecode
+         headerBuffer.append(".bytecode " + majorVersion + "." + minorVersion + lt);
+@@ -311,7 +324,7 @@
+     
+     
+     
+-    public void buildFields(Fields fds, ConstantPool cp) {
++    public void buildFields(Fields fds, ConstantPool cp) throws ClassFormatError {
+         
+         int[] field_info;
+             int access_flags;
+@@ -508,7 +521,7 @@
+     
+     
+     
+-    public void buildMethods(Methods mds, ConstantPool cp) {
++    public void buildMethods(Methods mds, ConstantPool cp) throws ClassFormatError {
+         
+         int[] method_info;
+             int access_flags;
+diff -u -r a/src/classfileanalyzer/ClassFile.java b/src/classfileanalyzer/ClassFile.java
+--- a/src/classfileanalyzer/ClassFile.java	2009-11-19 19:21:46.000000000 +1000
++++ b/src/classfileanalyzer/ClassFile.java	2009-11-19 19:22:08.000000000 +1000
+@@ -9,9 +9,7 @@
+ package classfileanalyzer;
+ 
+ 
+-import classfileanalyzer.util.*;
+ import java.io.*;
+-import java.util.*;
+ import java.util.jar.*;
+ 
+ 
+@@ -119,6 +117,19 @@
+     
+     
+     
++    public ClassFile(String fileName, byte[] data) {
++        this(); // invoke constructor ClassFile()
++        this.fileLength = data.length;
++        this.classBytes = new int[fileLength];
++        this.fileName = fileName;
++        for(int i = 0; i < data.length; i++)
++            classBytes[i] = ((int)data[i])&0xff;
++    }
++    
++    
++    
++    
++    
+     public ClassFile(String jarName, String fileName) {
+         this(); // invoke constructor ClassFile()
+         this.fileName = fileName;
+@@ -151,7 +162,7 @@
+     
+     
+     
+-    public void parse() {
++    public void parse() throws ClassFormatError {
+         magic[0] = classBytes[0];
+         magic[1] = classBytes[1];
+         magic[2] = classBytes[2];
+@@ -161,9 +172,8 @@
+              (magic[1] != 0xfe) ||
+              (magic[2] != 0xba) ||
+              (magic[3] != 0xbe) ) {
+-            System.out.println("ClassFileAnalyzer Error: " + 
++            throw new ClassFormatError(
+                     "No Java class file, magic number invalid.");
+-            System.exit(1);
+         }
+         
+         minor_version[0] = classBytes[4];
+diff -u -r a/src/classfileanalyzer/Interfaces.java b/src/classfileanalyzer/Interfaces.java
+--- a/src/classfileanalyzer/Interfaces.java	2009-11-19 19:21:46.000000000 +1000
++++ b/src/classfileanalyzer/Interfaces.java	2009-11-19 19:22:08.000000000 +1000
+@@ -9,9 +9,6 @@
+ package classfileanalyzer;
+ 
+ 
+-import java.util.*;
+-
+-
+ 
+ 
+ 
+diff -u -r a/src/classfileanalyzer/Main.java b/src/classfileanalyzer/Main.java
+--- a/src/classfileanalyzer/Main.java	2009-11-19 19:21:46.000000000 +1000
++++ b/src/classfileanalyzer/Main.java	2009-11-19 19:22:08.000000000 +1000
+@@ -115,7 +115,12 @@
+         } else {
+             clazz = new ClassFile(jarName, fileName);
+         }
+-        clazz.parse();
++        try {
++            clazz.parse();
++        } catch (ClassFormatError e) {
++            System.out.println(e.toString());
++            System.exit(1);
++        }
+         
+         // dump additional informations
+         if (info) {
+@@ -141,18 +146,23 @@
+         Fields fds = clazz.getFields();
+         Methods mds = clazz.getMethods();
+         Attributes aes = clazz.getAttributes();
+-                
++        
+         Builder builder = new Builder();
+-        builder.buildHeader(minor_version, 
+-                            major_version, 
+-                            cp,
+-                            access_flags, 
+-                            this_class, 
+-                            super_class,
+-                            ifs,
+-                            aes);
+-        builder.buildFields(fds, cp);
+-        builder.buildMethods(mds, cp);
++        try {
++            builder.buildHeader(minor_version, 
++                                major_version, 
++                                cp,
++                                access_flags, 
++                                this_class, 
++                                super_class,
++                                ifs,
++                                aes);
++            builder.buildFields(fds, cp);
++            builder.buildMethods(mds, cp);
++        } catch (ClassFormatError e) {
++            System.out.println(e.toString());
++            System.exit(1);
++        }
+                 
+         StringBuffer assemblerSourceText = builder.getAssemblerSourceText();
+         if (file) {
+diff -u -r a/src/classfileanalyzer/util/Hexdump.java b/src/classfileanalyzer/util/Hexdump.java
+--- a/src/classfileanalyzer/util/Hexdump.java	2009-11-19 19:21:46.000000000 +1000
++++ b/src/classfileanalyzer/util/Hexdump.java	2009-11-19 19:22:08.000000000 +1000
+@@ -9,7 +9,6 @@
+ package classfileanalyzer.util;
+ 
+ 
+-import java.io.*;
+ import static classfileanalyzer.Main.lt;
+ 
+ 
