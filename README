@@ -28,6 +28,7 @@ The following files need to be downloaded/extracted/copied into
 java/war/WEB-INF/lib/:
 - http://beanshell.org/bsh-2.0b4.jar
 - http://download.eclipse.org/eclipse/downloads/drops/R-3.5.1-200909170800/ecj-3.5.1.jar
+- http://classfileanalyzer.googlecode.com/files/classfileanalyzer-0.8.0.jar
 - commons-lang-2.4.jar from http://apache.org/dist/commons/lang/binaries/commons-lang-2.4-bin.tar.gz
 - commons-logging-1.1.1.jar from http://apache.org/dist/commons/logging/binaries/commons-logging-1.1.1-bin.tar.gz
 - lib/resin.jar (rename to resin-4.0.0.jar) from http://caucho.com/download/resin-4.0.0.tar.gz
@@ -40,11 +41,6 @@ http://svn.apache.org/viewvc/commons/proper/jci/trunk/README.txt?view=markup
 Then copy core/target/commons-jci-core-1.1-SNAPSHOT.jar and
 compilers/eclipse/target/commons-jci-eclipse-1.1-SNAPSHOT.jar into
 java/war/WEB-INF/lib/
-
-ClassFileAnalyzer will need to be downloaded from
-http://classfileanalyzer.javaseiten.de/downloads/classfileanalyzer-src-0-7-0.zip
-have can.patch applied to it, built, and jar'd into
-java/war/WEB-INF/lib/classfileanalyzer-0.7.0.jar
 
 The code is licensed under the AGPLv3 (see COPYING). Therefore, if you use a
 modified version of the code on a public website, you will need to provide
