@@ -21,11 +21,6 @@ import os
 import zipfile
 import logging
 
-# prevent "ImportError: cannot import name TextLexer" when
-# markdown.extensions.codehilite.Codehilite.hilite tries
-# to import TextLexer from pygments.lexers
-from pygments.lexers.special import TextLexer
-
 from markdown import markdown
 
 from django import http

@@ -13,14 +13,14 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from cc.vidr.jasminlexer import JasminLexer
-
 import re
-from urllib import urlopen, urlencode
-from xml.etree.ElementTree import parse
+import urllib
+import xml.etree.ElementTree as etree
 
 from django.template.loader import render_to_string
 from django.conf import settings
+
+from google.appengine.api import urlfetch
 
 from cc.vidr.util import humanize_list
 
@@ -56,9 +56,13 @@ def dejava(request):
     lines = source.split('\n')
     classname = request.POST['classname']
     
-    root = parse(urlopen(
-        "http://" + settings.JAVA_DOMAIN + "/projects/dejava/",
-        urlencode({'source': source, 'classname': classname}))).getroot()
+    url = "http://" + settings.JAVA_DOMAIN + "/projects/dejava/"
+    form_data = urllib.urlencode({'source': source, 'classname': classname})
+    result = urlfetch.fetch(url=url, payload=form_data, method=urlfetch.POST,
+                 headers={'Content-Type': 'application/x-www-form-urlencoded'},
+                 deadline=10)
+    
+    root = etree.fromstring(result.content)
     errors = []
     for error in root.findall('errors/error'):
         errors.append(error.text.strip())

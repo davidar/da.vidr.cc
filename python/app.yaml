@@ -34,7 +34,7 @@ handlers:
   secure: optional
 
 - url: /.*
-  script: common/appenginepatch/main.py
+  script: cc/vidr/main.py
   secure: optional
 
 skip_files:
