@@ -49,6 +49,8 @@ urlpatterns = auth_patterns + patterns('',
         {'zipfilename': 'jsMath-3.6b', 'prefix': 'jsMath'}),
     (r'^colorpicker/(.*)$', 'cc.vidr.util.zipserve',
         {'zipfilename': 'colorpicker'}),
+    (r'^projects/lljvm/doc/(.*)$', 'cc.vidr.util.zipserve',
+        {'zipfilename': 'lljvm-doc-0.2', 'prefix': 'lljvm-doc-0.2'}),
     
     (r'^export.json$', 'backup.views.export_json'),
     (r'^source.zip$', 'backup.views.export_source_zip'),
