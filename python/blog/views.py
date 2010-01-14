@@ -1,4 +1,4 @@
-# Copyright (C) 2009  David Roberts <d@vidr.cc>
+# Copyright (C) 2009-2010  David Roberts <d@vidr.cc>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -25,7 +25,7 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from google.appengine.ext import db
 
 from cc.vidr.util import admin, slugify, md_convert, split_url, flush_cache
-from blog.models import Post, PostForm, Category, CategoryForm
+from blog.models import Post, PostForm
 from blog.ping import ping_all_search_engines, pingomatic
 
 def get_post(y, m, d, slug):
@@ -38,11 +38,6 @@ def get_post(y, m, d, slug):
                .get()
     if post is None: raise http.Http404
     return post
-
-def get_category(url):
-    cat = Category.all().filter('path', url).get()
-    if cat is None: raise http.Http404
-    return cat
 
 def paginate(objects, page):
     page = int(page)
@@ -59,14 +54,6 @@ def index(request, page=1):
 def view(request, y, m, d, slug):
     post = get_post(y, m, d, slug)
     return shortcuts.render_to_response('blog/view.html', {'post': post})
-
-def view_category(request, url, page=1):
-    cat = get_category(url)
-    subcats = Category.all().filter('ancestors', cat.slug)
-    posts = Post.all().filter('category', cat.slug).order('-date')
-    posts_paginated = paginate(posts, page)
-    return shortcuts.render_to_response('blog/category/view.html',
-        {'category': cat, 'subcategories': subcats, 'posts': posts_paginated})
 
 @admin
 def edit(request, y=None, m=None, d=None, slug=None):
@@ -93,40 +80,6 @@ def edit(request, y=None, m=None, d=None, slug=None):
         post.put()
         flush_cache()
         return http.HttpResponseRedirect(post.get_absolute_url())
-
-def category_slug_changed(from_cat, to_cat):
-    posts = Post.all().filter('category', from_cat)
-    for post in posts:
-        i = post.category.index(from_cat)
-        post.category[i] = to_cat
-        post.put()
-    
-    cats = Category.all().filter('ancestors', from_cat)
-    for cat in cats:
-        i = cat.ancestors.index(from_cat)
-        cat.ancestors[i] = to_cat
-        cat.path = '/'.join(cat.ancestors + [cat.slug])
-        cat.put()
-
-@admin
-def edit_category(request, url=None):
-    data = request.POST or None
-    if url: instance = get_category(url)
-    else:   instance = None
-    orig_slug = instance.slug
-    form = CategoryForm(data=data, instance=instance)
-    valid_submission = request.POST and form.is_valid()
-    if not valid_submission:
-        return shortcuts.render_to_response(
-            'blog/category/edit.html', {'form': form})
-    else:
-        cat = form.save(commit=False)
-        cat.path = '/'.join(cat.ancestors + [cat.slug])
-        cat.put()
-        if orig_slug != cat.slug:
-            category_slug_changed(orig_slug, cat.slug)
-        flush_cache()
-        return http.HttpResponseRedirect(cat.get_absolute_url())
 
 @admin
 def ping(request):

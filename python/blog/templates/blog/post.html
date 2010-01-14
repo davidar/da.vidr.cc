@@ -2,9 +2,7 @@
 <div class="post">
     <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
         <ul class="post_info">
-            <li class="date">Posted on {{ post.date|date:"Y-m-d" }}
-            {% for cat in post.category %}{% if forloop.first %} in {% else %}, {% endif %}
-            <a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a>{% endfor %}</li>
+            <li class="date">Posted on {{ post.date|date:"Y-m-d" }}</li>
             <li class="comments"><a href="http://{{ site.domain }}{{ post.get_absolute_url }}#disqus_thread">Comments</a></li>
         </ul>
     {{ post.content_html|safe }}

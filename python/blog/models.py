@@ -1,4 +1,4 @@
-# Copyright (C) 2009  David Roberts <d@vidr.cc>
+# Copyright (C) 2009-2010  David Roberts <d@vidr.cc>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -26,7 +26,6 @@ class Post(db.Model):
     slug = db.StringProperty()
     date = db.DateTimeProperty(auto_now_add=True)
     mod_date = db.DateTimeProperty(auto_now=True)
-    category = db.StringListProperty()
     content = db.TextProperty()
     content_html = db.TextProperty()
     
@@ -34,68 +33,9 @@ class Post(db.Model):
         return self.date.strftime("/%Y/%m/%d/") + self.slug + '/'
 
 class PostForm(forms.ModelForm):
-    category = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}),
-                               required=False)
-    
     class Meta:
         model = Post
         exclude = ['slug', 'date', 'mod_date', 'content_html']
-
-# TODO: the category system is a bit of a mess, perhaps it should be replaced
-#       by a simple tagging system
-class Category(db.Model):
-    title = db.StringProperty()
-    slug = db.StringProperty()
-    ancestors = db.StringListProperty()
-    path = db.StringProperty()
-    
-    def get_absolute_url(self):
-        return "/category/%s/" % self.path
-    
-    @classmethod
-    def slug_map(cls):
-        slug_map = memcache.get('category_slugmap')
-        if slug_map is None:
-            cats = cls.all()
-            slug_map = dict([(cat.slug, cat) for cat in cats])
-            memcache.add('category_slugmap', slug_map)
-        return slug_map
-    
-    @classmethod
-    def hierarchy(cls):
-        slug_map = cls.slug_map()
-        for cat in slug_map.itervalues():
-            cat.subcategories = []
-            cat.num_posts = 0
-        
-        for post in Post.all():
-            for cat_slug in post.category:
-                if cat_slug in slug_map:
-                    slug_map[cat_slug].num_posts += 1
-                else:
-                    logging.error("post '%s' refers to non-existent "
-                        "category '%s'", post.slug, cat_slug)
-        
-        categories = []
-        cats = sorted(slug_map.itervalues(),
-                      lambda x,y: cmp(x.title.lower(), y.title.lower()))
-        for cat in cats:
-            if len(cat.ancestors) == 0:
-                categories.append(cat)
-            else:
-                parent = cat.ancestors[-1]
-                if parent in slug_map:
-                    slug_map[parent].subcategories.append(cat)
-                else:
-                    logging.error("category '%s' refers to non-existent "
-                        "parent category '%s'", cat.slug, parent)
-        
-        return categories
-
-class CategoryForm(forms.ModelForm):
-    class Meta:
-        model = Category
-        exclude = ['path']
 
 class BlogSitemap(Sitemap):
     changefreq = 'monthly'

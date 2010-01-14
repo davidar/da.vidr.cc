@@ -24,12 +24,6 @@ indexes:
 
 - kind: blog_post
   properties:
-  - name: category
-  - name: date
-    direction: desc
-
-- kind: blog_post
-  properties:
   - name: slug
   - name: date
 

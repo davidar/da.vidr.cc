@@ -1,4 +1,4 @@
-# Copyright (C) 2009  David Roberts <d@vidr.cc>
+# Copyright (C) 2009-2010  David Roberts <d@vidr.cc>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -29,7 +29,7 @@ from appenginepatcher import appid
 from aecmd import PROJECT_DIR, COMMON_DIR
 
 from cc.vidr.util import admin, md_convert, flush_cache
-from blog.models import Post, Category
+from blog.models import Post
 from pages.models import Page
 
 datetime_format = "%Y-%m-%d %H:%M:%S"
@@ -40,16 +40,8 @@ def export_posts():
         'slug': post.slug,
         'date': post.date.strftime(datetime_format),
         'mod_date': post.mod_date.strftime(datetime_format),
-        'category': post.category,
         'content': post.content,
         } for post in Post.all()]
-
-def export_categories():
-    return [{
-        'title': cat.title,
-        'slug': cat.slug,
-        'ancestors': cat.ancestors,
-        } for cat in Category.all()]
 
 def export_pages():
     return [{
@@ -71,20 +63,10 @@ def import_posts(posts):
         post.slug = d['slug']
         post.date = datetime.strptime(d['date'], datetime_format)
         post.mod_date = datetime.strptime(d['mod_date'], datetime_format)
-        post.category = d['category']
         post.content = d['content']
         post.content_html = md_convert(post.content)
         post.put()
     Post.mod_date.auto_now = True
-
-def import_categories(cats):
-    for d in cats:
-        cat = Category()
-        cat.title = d['title']
-        cat.slug = d['slug']
-        cat.ancestors = d['ancestors']
-        cat.path = '/'.join(cat.ancestors + [cat.slug])
-        cat.put()
 
 def import_pages(pages):
     Page.mod_date.auto_now = False # don't set mod_date to now
@@ -105,9 +87,7 @@ def import_pages(pages):
 @admin
 def export_json(request):
     response = http.HttpResponse(mimetype='text/plain')
-    json.dump({'posts': export_posts(),
-               'categories': export_categories(),
-               'pages': export_pages()},
+    json.dump({'posts': export_posts(), 'pages': export_pages()},
               response, indent=True)
     return response
 
@@ -140,7 +120,6 @@ def import_json(request):
         if form.is_valid():
             d = json.load(request.FILES['file'])
             import_posts(d['posts'])
-            import_categories(d['categories'])
             import_pages(d['pages'])
             flush_cache()
             return http.HttpResponseRedirect('/')
@@ -157,8 +136,6 @@ def process_wxr(f):
     posts = []
     pages = []
     
-    cats = {}
-    
     for item in wxr.findall('channel/item'):
         p = {
             'title': item.find('title').text,
@@ -171,12 +148,6 @@ def process_wxr(f):
         
         ptype = item.find('{%s}post_type' % NS_WP).text
         if ptype == 'post':
-            p['category'] = []
-            for cat in item.findall('category'):
-                cat_slug = cat.get('nicename')
-                if cat_slug is None: continue
-                p['category'].append(cat_slug)
-                cats[cat_slug] = cat.text
             posts.append(p)
         elif ptype == 'page':
             p['parent_page'] = '/'.join(
@@ -185,10 +156,7 @@ def process_wxr(f):
             p['head'] = None
             pages.append(p)
     
-    categories = [{'title': title, 'slug': slug, 'ancestors': []}
-                  for slug, title in cats.iteritems()]
-    
-    return {'posts': posts, 'pages': pages, 'categories': categories}
+    return {'posts': posts, 'pages': pages}
 
 @admin
 def import_wxr(request):
@@ -205,7 +173,6 @@ def import_wxr(request):
                 return shortcuts.render_to_response('backup/import.html',
                     {'form': form, 'message': msg})
             import_posts(d['posts'])
-            import_categories(d['categories'])
             import_pages(d['pages'])
             flush_cache()
             return http.HttpResponseRedirect('/')

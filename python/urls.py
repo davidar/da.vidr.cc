@@ -64,15 +64,10 @@ urlpatterns = auth_patterns + patterns('',
     (r'^page/(\d*)/$', 'blog.views.index'),
     
     (r'^new/post/$', 'blog.views.edit'),
-    (r'^new/category/$', 'blog.views.edit_category'),
     (r'^new/page/$', 'pages.views.edit'),
     
     (r'^(\d{4})/(\d{2})/(\d{2})/([\w-]+)/edit/$', 'blog.views.edit'),
     (r'^(\d{4})/(\d{2})/(\d{2})/([\w-]+)/$', 'blog.views.view'),
-    
-    (r'^category/([\w/-]+)/edit/$', 'blog.views.edit_category'),
-    (r'^category/([\w/-]+)/$', 'blog.views.view_category'),
-    (r'^category/([\w/-]+)page/(\d*)/$', 'blog.views.view_category'),
     
     (r'^([\w/-]+)/edit/$', 'pages.views.edit'),
     (r'^([\w/-]+)/source/$', 'pages.views.view_source'),
