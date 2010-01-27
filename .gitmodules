@@ -22,3 +22,6 @@
 [submodule "submodules/django-codehilite"]
 	path = submodules/django-codehilite
 	url = git://github.com/davidar/django-codehilite.git
+[submodule "submodules/datum"]
+	path = submodules/datum
+	url = git://github.com/davidar/datum.git

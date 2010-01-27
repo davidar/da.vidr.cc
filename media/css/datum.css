@@ -1,0 +1,60 @@
+body {
+    background-color: #e6e6e6;
+    color: #444;
+    font: 1em Lucida, Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #777;
+}
+
+a img {
+    border: 0 none transparent;
+}
+
+ul {
+    list-style-type: square;
+}
+
+input {
+    font: 1em Lucida, Verdana, sans-serif;
+}
+
+form {
+    text-align: center;
+}
+
+#logo {
+    font: 8em Lucida, Verdana, sans-serif;
+    text-align: center;
+}
+
+#examples {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#response {
+    text-align: left;
+    color: #fff;
+    border: 3px solid #fff;
+    background-color: #111;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#footer {
+    text-align: center;
+}
+
+.toggleproof {
+    cursor: pointer;
+    color: #555;
+}
+
+.proof {
+    color: #aaa;
+}

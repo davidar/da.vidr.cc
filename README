@@ -29,8 +29,11 @@ java/war/WEB-INF/lib/:
 - http://beanshell.org/bsh-2.0b4.jar
 - http://download.eclipse.org/eclipse/downloads/drops/R-3.5.1-200909170800/ecj-3.5.1.jar
 - http://classfileanalyzer.googlecode.com/files/classfileanalyzer-0.8.0.jar
+- http://antlr.org/download/antlr-runtime-3.2.jar
 - commons-lang-2.4.jar from http://apache.org/dist/commons/lang/binaries/commons-lang-2.4-bin.tar.gz
 - commons-logging-1.1.1.jar from http://apache.org/dist/commons/logging/binaries/commons-logging-1.1.1-bin.tar.gz
+- commons-fileupload-1.2.1.jar from http://www.apache.org/dist/commons/fileupload/binaries/commons-fileupload-1.2.1-bin.tar.gz
+- commons-io-1.4.jar from http://www.apache.org/dist/commons/io/binaries/commons-io-1.4-bin.tar.gz
 - lib/resin.jar (rename to resin-4.0.0.jar) from http://caucho.com/download/resin-4.0.0.tar.gz
 - .../appengine-java-sdk-1.3.0/lib/user/appengine-api-*-1.3.0.jar
 - .../appengine-java-sdk-1.3.0/lib/user/orm/*.jar
