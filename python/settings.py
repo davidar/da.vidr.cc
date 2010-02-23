@@ -21,6 +21,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'google.appengine.ext.appstats.recording.AppStatsDjangoMiddleware',
     'ragendja.middleware.ErrorMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     # Django authentication

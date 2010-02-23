@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <%--
- Copyright (C) 2010  David Roberts <d@vidr.cc>
+ Copyright (C) 2010  David Roberts <http://da.vidr.cc/>
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -32,7 +32,7 @@
 <%!
 void printFact(JspWriter out, Literal fact) throws IOException {
     Literal[] proof = Server.getProof(fact);
-    String response = QA.respond(fact);
+    String response = StringUtils.capitalize(QA.respond(fact));
     out.println("<li>");
     if(response != null)
         out.print(StringEscapeUtils.escapeHtml(response));
@@ -83,9 +83,14 @@ if(q.isEmpty()) {
 <ul>
 <%
     String[] questions = {
-        "Who are Hans Albert Einstein's ancestors?",
-        "Who are the sons of Albert Einstein?",
-        "Who were Hermann Einstein's children?",
+        "Who are Einstein's ancestors?",
+        "Who was Turing's father?",
+        "What is Linus Torvalds's profession?",
+        "When was Madonna born?",
+        "When did Da Vinci die?",
+        "Where was Elvis born?",
+        "How tall is Obama?",
+        "How much does Will Ferrell weigh?",
     };
     for(String question : questions) {
 %>
@@ -136,6 +141,12 @@ David Roberts</a>.
 <p>
 <a href="http://www.fsf.org/licensing/licenses/agpl-3.0.html">
 <img src="http://www.gnu.org/graphics/agplv3-155x51.png" alt="AGPLv3" /></a>
+</p>
+<p style="font-size: x-small;">
+<img alt="Freebase CC-BY"
+     src="http://www.freebase.com/policies/freebase-cc-by-61x23.png" /> <br />
+Source: <a href="http://www.freebase.com/">Freebase</a>, <br />
+licensed under <a href="http://creativecommons.org/licenses/by/2.5/">CC-BY</a>
 </p>
 </div>
 

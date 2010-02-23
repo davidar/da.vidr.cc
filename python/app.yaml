@@ -20,6 +20,9 @@ handlers:
   secure: optional
   login: admin
 
+- url: /stats.*
+  script: $PYTHON_LIB/google/appengine/ext/appstats/ui.py
+
 - url: /favicon.ico
   static_files: media/images/favicon.ico
   upload: media/images/favicon.ico
