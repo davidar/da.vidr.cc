@@ -25,3 +25,6 @@
 [submodule "submodules/datum"]
 	path = submodules/datum
 	url = git://github.com/davidar/datum.git
+[submodule "submodules/3dglobe"]
+	path = submodules/3dglobe
+	url = git://github.com/davidar/3dglobe.git

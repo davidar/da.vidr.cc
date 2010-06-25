@@ -1,0 +1,4 @@
+open -u a5893561 ftp.php.da.vidr.cc
+set ftp:ssl-allow false
+mirror --reverse --delete --dereference --exclude .*~ --exclude \.git --verbose . public_html
+exit
