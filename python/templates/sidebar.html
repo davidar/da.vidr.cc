@@ -1,5 +1,4 @@
 {% load blog_tags %}
-{% load quotes %}
 {% load disqus_tags %}
 
 <div class="sidebar">
@@ -8,20 +7,11 @@
 <h4><span>Search</span></h4>
 <!-- Google Custom Search Element -->
 <div id="cse" style="width:100%">Loading...</div>
-<!--
-<form method="post" action="">
-<div id="search">
-    <input type="text" class="text" name="keywords" />
-    <input type="submit" class="button" value="Go" />
-    <br class="clear" />
-</div>
-</form>
--->
 </div>
 
 <div class="panel">
 <h4><span>Random</span> Quote</h4>
-{% random_quote %}
+<div id="quote"></div>
 </div>
 
 <hr />

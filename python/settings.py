@@ -66,8 +66,6 @@ INSTALLED_APPS = (
     'console',
     
     # template tags
-    'helloworld',
-    'quotes',
     'codehilite',
     
     # views
