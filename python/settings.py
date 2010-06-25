@@ -4,7 +4,7 @@ from settings_private import SECRET_KEY, DISQUS_WEBSITE_SHORTNAME, \
 
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'http://static.da.vidr.cc'
 ADMIN_MEDIA_PREFIX = '/media/admin/'
 
 USE_I18N = False

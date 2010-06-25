@@ -63,4 +63,9 @@ quotes = (
     (u'When two trains approach each other at a crossing, both shall come to '
      u'a full stop and neither shall start up again until the other has gone.',
      'Kansas Legislature', 'http://en.wikipedia.org/wiki/Deadlock'),
+    (u'Nature is nowhere accustomed more openly to display her secret '
+     u'mysteries than in cases where she shows traces of her workings apart '
+     u'from the beaten path.', 'William Harvey',
+     'http://en.wikisource.org/wiki/Page:The_Works_of_William_Harvey_'
+     '%28part_2_of_2%29.djvu/98'),
 )

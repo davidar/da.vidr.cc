@@ -24,16 +24,12 @@ handlers:
   script: $PYTHON_LIB/google/appengine/ext/appstats/ui.py
 
 - url: /favicon.ico
-  static_files: media/images/favicon.ico
-  upload: media/images/favicon.ico
+  static_files: favicon.ico
+  upload: favicon.ico
   secure: optional
 
 - url: /media/admin
   static_dir: common/django_aep_export/admin_media/media
-  secure: optional
-
-- url: /media
-  static_dir: media
   secure: optional
 
 - url: /.*

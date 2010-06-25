@@ -103,7 +103,7 @@ hr {
 #header {
     width: 100%;
     height: 122px;
-    background: #246 url('/media/images/header-bg.gif') repeat-x;
+    background: #246 url('http://static.da.vidr.cc/images/header-bg.gif') repeat-x;
 }
 
 #header_inner {
@@ -160,7 +160,7 @@ hr {
     margin-left: 0.5em;
     display: block;
     padding: 1.1em 1.4em 1.0em 1.4em;
-    background: #fff url('/media/images/tab-bg.gif') repeat-x;
+    background: #fff url('http://static.da.vidr.cc/images/tab-bg.gif') repeat-x;
     border: solid 1px #fff;
     color: #555;
     font-weight: bold;
@@ -170,7 +170,7 @@ hr {
 }
 
 #menu li a.active {
-    background: #ff790b url('/media/images/tab-active-bg.gif') repeat-x;
+    background: #ff790b url('http://static.da.vidr.cc/images/tab-active-bg.gif') repeat-x;
     color: #fff;
     border: solid 1px #db7623;
 }
@@ -256,12 +256,12 @@ hr {
 }
 
 #left .post ul.post_info li.date {
-    background-image: url('/media/images/icon-page.gif');
+    background-image: url('http://static.da.vidr.cc/images/icon-page.gif');
     margin-right: 1.1em;
 }
 
 #left .post ul.post_info li.comments {
-    background-image: url('/media/images/icon-comments.gif');
+    background-image: url('http://static.da.vidr.cc/images/icon-comments.gif');
 }
 
 #footer {
@@ -319,7 +319,7 @@ hr {
     color: #777;
     padding: 2px 18px 2px 2px;
     /* icon from <http://feedicons.com/> */
-    background: url('/media/images/feed-icon-14x14.png') right center no-repeat;
+    background: url('http://static.da.vidr.cc/images/feed-icon-14x14.png') right center no-repeat;
     height: 14px;
 }
 

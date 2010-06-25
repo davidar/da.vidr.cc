@@ -1,6 +1,7 @@
 antlr-runtime-3.2.jar
-appengine-api-1.0-sdk-1.3.0.jar
-appengine-api-labs-1.3.0.jar
+appengine-api-1.0-sdk-1.3.4.jar
+appengine-api-labs-1.3.4.jar
+appengine-jsr107cache-1.3.4.jar
 bsh-2.0b4.jar
 classfileanalyzer-0.8.0.jar
 commons-fileupload-1.2.1.jar
@@ -9,7 +10,7 @@ commons-jci-core-1.1-SNAPSHOT.jar
 commons-jci-eclipse-1.1-SNAPSHOT.jar
 commons-lang-2.4.jar
 commons-logging-1.1.1.jar
-datanucleus-appengine-1.0.4.1.final.jar
+datanucleus-appengine-1.0.7.final.jar
 datanucleus-core-1.1.5.jar
 datanucleus-jpa-1.1.5.jar
 ecj-3.5.1.jar
@@ -18,4 +19,5 @@ geronimo-jta_1.1_spec-1.1.1.jar
 jdo2-api-2.3-eb.jar
 joda-time-1.6.jar
 json_simple-1.1.jar
+jsr107cache-1.1.jar
 resin-4.0.0.jar

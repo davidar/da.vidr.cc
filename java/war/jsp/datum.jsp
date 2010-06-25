@@ -59,7 +59,8 @@ void printFact(JspWriter out, Literal fact) throws IOException {
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 <title>Datum</title>
-<link type="text/css" rel="stylesheet" href="/media/css/datum.css" />
+<link type="text/css" rel="stylesheet"
+      href="http://static.da.vidr.cc/css/datum.css" />
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript">google.load("jquery", "1");</script>
 </head>
