@@ -1,0 +1,28 @@
+---
+layout: default
+title: Home
+tab: blog
+head: |
+    <link rel="openid.server" href="http://www.myopenid.com/server" />
+    <link rel="openid.delegate" href="http://openid.da.vidr.cc/david" />
+    <link rel="openid2.local_id" href="http://openid.da.vidr.cc/david" />
+    <link rel="openid2.provider" href="http://www.myopenid.com/server" />
+    <meta http-equiv="X-XRDS-Location" content="http://static.da.vidr.cc/xrds" />
+---
+
+{% for page in paginator.posts %}
+<div class="post">
+    {% include post-header.html %}
+    {{ page.content }}
+</div>
+<br class="clear" />
+{% endfor %}
+
+<div class="pagination"> 
+    {% if paginator.next_page %}
+    <div class="floatleft"><a href="/page{{ paginator.next_page }}/">&laquo; older entries</a></div>
+    {% endif %}
+    {% if paginator.previous_page %}
+    <div class="floatright"><a href="/{% if paginator.previous_page != 1 %}page{{ paginator.previous_page }}/{% endif %}">newer entries &raquo;</a></div>
+    {% endif %}
+</div>

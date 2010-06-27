@@ -1,0 +1,40 @@
+---
+layout: nil
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://{{ site.domain }}/</loc>
+        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    {% for post in site.posts %}
+    <url>
+        <loc>http://{{ site.domain }}{{ post.url }}</loc>
+        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    {% endfor %}
+    <url>
+        <loc>http://{{ site.domain }}/projects/</loc>
+        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    {% for page in site.pages %}
+    {% if page.layout == 'page' or page.layout == 'project-page' %}
+    <url>
+        {% if page.layout == 'page' %}
+        <loc>http://{{ site.domain }}{{ page.url }}</loc>
+        {% elsif page.layout == 'project-page' %}
+        <loc>http://{{ site.domain }}/projects{{ page.url }}</loc>
+        {% endif %}
+        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    {% endif %}
+    {% endfor %}
+</urlset>

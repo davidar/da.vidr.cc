@@ -1,0 +1,10 @@
+pygments: true
+markdown: rdiscount
+permalink: pretty
+paginate: 5
+
+domain: da.vidr.cc
+
+disqus_shortname: davidar
+disqus_avatar_size: 32
+disqus_num_recent_comments: 3

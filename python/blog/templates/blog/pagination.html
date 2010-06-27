@@ -1,9 +1,0 @@
-<div class="pagination"> 
-    {% if posts.has_next %}
-    <div class="floatleft"><a href="{{ path }}page/{{ posts.next_page_number }}/">&laquo; older entries</a></div>
-    {% endif %}
-    {% if posts.has_previous %}
-    <div class="floatright"><a href="{{ path }}{% ifnotequal posts.previous_page_number 1 %}page/{{ posts.previous_page_number }}/{% endifnotequal %}">newer entries &raquo;</a></div>
-    {% endif %}
-</div>
-

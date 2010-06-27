@@ -12,3 +12,17 @@ handlers:
 
 - url: /js
   static_dir: js
+
+- url: /jsmath/.*
+  script: zip/serve.py
+
+- url: /colorpicker/.*
+  script: zip/serve.py
+
+- url: /projects/lljvm/doc/.*
+  script: zip/serve.py
+
+- url: /xrds
+  static_files: xrds.xml
+  upload: xrds.xml
+  mime_type: application/xrds+xml

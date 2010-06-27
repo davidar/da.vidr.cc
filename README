@@ -1,56 +1,8 @@
-This project is not intended to work out-of-the-box - don't clone it and upload
-it straight to App Engine without any modifications.
+This repository contains the source code and data for da.vidr.cc[1] and its
+subdomains.
 
-At least the following files will need to be modified/personalised:
-- python/blog/models.py: BlogFeed.title
-- python/cc/vidr/util.py: OverrideSiteIDMiddleware.process_request: domain
-- python/app.yaml
-- python/templates/{base,footer,head,sidebar,tracking}.html
-- python/templates/robots.txt
-- python/templates/xrds.xml
-- java/.project
-- java/war/WEB-INF/appengine-web.xml
-- java/war/index.html
-- static/*
+All markdown files (*.md) within the jekyll directory and its subdirectories
+may not be reused without my permission. All other files are licensed under
+the AGPLv3 (see COPYING), unless indicated otherwise.
 
-A python/settings_private.py file will need to be created, containing the
-variables listed at the top of python/settings.py.
-
-The following files need to be downloaded into python/common/zip-packages/:
-- http://bitbucket.org/gumptioncom/appenginepatch-sample/raw/d0f6cfe01916/common/zip-packages/django-1.1.zip
-
-The following files need to be downloaded into python/common/zip-media/:
-- http://downloads.sourceforge.net/project/jsmath/jsMath/3.6b/jsMath-3.6b.zip
-- http://downloads.sourceforge.net/project/jsmath/jsMath%20Image%20Fonts/1.3/jsMath-fonts-1.3.zip
-- http://www.eyecon.ro/colorpicker/colorpicker.zip
-
-The following files need to be downloaded/extracted/copied into
-java/war/WEB-INF/lib/:
-- http://beanshell.org/bsh-2.0b4.jar
-- http://download.eclipse.org/eclipse/downloads/drops/R-3.5.1-200909170800/ecj-3.5.1.jar
-- http://classfileanalyzer.googlecode.com/files/classfileanalyzer-0.8.0.jar
-- http://antlr.org/download/antlr-runtime-3.2.jar
-- http://json-simple.googlecode.com/files/json_simple-1.1.jar
-- commons-lang-2.4.jar from http://apache.org/dist/commons/lang/binaries/commons-lang-2.4-bin.tar.gz
-- commons-logging-1.1.1.jar from http://apache.org/dist/commons/logging/binaries/commons-logging-1.1.1-bin.tar.gz
-- commons-fileupload-1.2.1.jar from http://www.apache.org/dist/commons/fileupload/binaries/commons-fileupload-1.2.1-bin.tar.gz
-- commons-io-1.4.jar from http://www.apache.org/dist/commons/io/binaries/commons-io-1.4-bin.tar.gz
-- joda-time-1.6.jar from http://prdownloads.sourceforge.net/project/joda-time/joda-time/1.6/joda-time-1.6.tar.gz
-- lib/resin.jar (rename to resin-4.0.0.jar) from http://caucho.com/download/resin-4.0.0.tar.gz
-- .../appengine-java-sdk-1.3.4/lib/user/*.jar
-- .../appengine-java-sdk-1.3.4/lib/user/orm/*.jar
-
-The development version of JCI will need to be checked out and built as
-described at http://commons.apache.org/jci/source-repository.html and
-http://svn.apache.org/viewvc/commons/proper/jci/trunk/README.txt?view=markup
-Then copy core/target/commons-jci-core-1.1-SNAPSHOT.jar and
-compilers/eclipse/target/commons-jci-eclipse-1.1-SNAPSHOT.jar into
-java/war/WEB-INF/lib/
-
-The code is licensed under the AGPLv3 (see COPYING). Therefore, if you use a
-modified version of the code on a public website, you will need to provide
-public access to the modified source code.
-
-This repository uses git submodules - see
-<http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#submodules>
-for details on working with git-submodule.
+[1] http://da.vidr.cc/

@@ -1,0 +1,40 @@
+application: dar
+version: 3
+runtime: python
+api_version: 1
+
+handlers:
+# root
+- url: /
+  static_files: site/index.html
+  upload: site/index.html
+
+# redirection
+- url: /apps/(.+)/
+  script: redirect.py
+- url: /feeds/(.+)/
+  script: redirect.py
+- url: /tools/(.+)/
+  script: redirect.py
+
+# remove directory index
+- url: .*/index\.[^.]+
+  script: remove_index.py
+
+# directories
+- url: /(.+)/
+  static_files: site/\1/index.html
+  upload: site/.*
+
+# top-level files
+- url: /([^/]+\.[^/]+)
+  static_files: site/\1
+  upload: site/.*
+
+# add trailing slash to directory
+- url: /[^.]*[^/]
+  script: add_trailing_slash.py
+
+# page not found
+- url: /.*
+  script: not_found.py
