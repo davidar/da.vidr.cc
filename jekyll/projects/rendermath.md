@@ -12,9 +12,9 @@ head: |
     jsMath.Extension.Require("AMSmath");
     jsMath.Controls.cookie.scale = 133; // scale font by 133%
     </script>
-    <link type="text/css" rel="stylesheet" href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css"></link>
-    <script type="text/javascript" src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js"></script>
-    <script type="text/javascript" src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushXml.js"></script>
+    <link type="text/css" rel="stylesheet" href="http://static.da.vidr.cc/syntaxhighlighter/styles/shThemeDefault.css"></link>
+    <script type="text/javascript" src="http://static.da.vidr.cc/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="http://static.da.vidr.cc/syntaxhighlighter/scripts/shBrushXml.js"></script>
 ---
 
 Render TeX-style math as HTML.

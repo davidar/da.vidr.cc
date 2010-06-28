@@ -18,76 +18,21 @@
 package cc.vidr.dejava;
 
 import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.jci.problems.CompilationProblem;
-import org.apache.commons.lang.StringEscapeUtils;
-
-import cc.vidr.StreamUtils;
-
 @SuppressWarnings("serial")
 public class DejaVaServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
-    throws IOException {
-        resp.setContentType("text/html");
-        StreamUtils.pipe(resp.getWriter(),
-                DejaVaServlet.class.getResourceAsStream("dejava.html"));
+    throws IOException, ServletException {
+        req.getRequestDispatcher("/jsp/dejava.jsp").forward(req, resp);
     }
     
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
-    throws IOException {
-        resp.setContentType("application/xml");
-        
-        String source = req.getParameter("source");
-        String filename = req.getParameter("classname") + ".java";
-        
-        JavaSourceCompiler compiler =
-            new JavaSourceCompiler(filename, source);
-        compiler.compile();
-
-        resp.getWriter().println(
-                "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
-        resp.getWriter().println("<dejava>");
-        
-        resp.getWriter().println("<errors>");
-        for(CompilationProblem err : compiler.getErrors()) {
-            resp.getWriter().print("<error>");
-            StringEscapeUtils.escapeXml(resp.getWriter(), err.toString());
-            resp.getWriter().println("</error>");
-        }
-        resp.getWriter().println("</errors>");
-
-        resp.getWriter().println("<warnings>");
-        for(CompilationProblem warn : compiler.getWarnings()) {
-            resp.getWriter().print("<warning>");
-            StringEscapeUtils.escapeXml(resp.getWriter(), warn.toString());
-            resp.getWriter().println("</warning>");
-        }
-        resp.getWriter().println("</warnings>");
-        
-        resp.getWriter().println("<classes>");
-        if(compiler.successful())
-            for(String className : compiler.getClassNames()) {
-                resp.getWriter().print(
-                        "<class classname=\"" + className + "\">");
-    
-                JavaClassDecompiler decompiler = new JavaClassDecompiler(
-                        className, compiler.getClassData(className));
-                try {
-                    decompiler.decompile();
-                    StringEscapeUtils.escapeXml(
-                            resp.getWriter(), decompiler.getAssemblyCode());
-                } catch (ClassFormatError e) {
-                    StringEscapeUtils.escapeXml(resp.getWriter(),
-                            "; Error decompiling class file:\n" +
-                            "; " + e.toString().replace("\n", "\n; "));
-                }
-                resp.getWriter().println("</class>");
-            }
-        resp.getWriter().println("</classes>");
-
-        resp.getWriter().println("</dejava>");
+    throws IOException, ServletException {
+        req.getRequestDispatcher("/jsp/dejava.jsp").forward(req, resp);
     }
 }

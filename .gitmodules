@@ -7,3 +7,6 @@
 [submodule "submodules/3dglobe"]
 	path = submodules/3dglobe
 	url = git://github.com/davidar/3dglobe.git
+[submodule "submodules/blueprint-css"]
+	path = submodules/blueprint-css
+	url = git://github.com/joshuaclayton/blueprint-css.git

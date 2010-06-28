@@ -4,24 +4,25 @@ runtime: python
 api_version: 1
 
 handlers:
+# static directories
 - url: /css
   static_dir: css
-
 - url: /images
   static_dir: images
-
 - url: /js
   static_dir: js
 
+# zipped directories
 - url: /jsmath/.*
   script: zip/serve.py
-
 - url: /colorpicker/.*
   script: zip/serve.py
-
+- url: /syntaxhighlighter/.*
+  script: zip/serve.py
 - url: /projects/lljvm/doc/.*
   script: zip/serve.py
 
+# static files
 - url: /xrds
   static_files: xrds.xml
   upload: xrds.xml
