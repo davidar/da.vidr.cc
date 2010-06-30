@@ -1,12 +1,8 @@
 ---
-layout: default
+layout: page
 title: Projects
 tab: projects
 ---
-
-### Projects
-
-Various projects I've written.
 
  * [3D Globe](/projects/3dglobe/): 3D Globe is a simple virtual globe viewer written in PHP.
  * [Alter Feed Links](/projects/alter-feed-links/): Alter Feed Links is a WordPress plugin which allows you to manually set the links WordPress provides for feeds. For example, if you use FeedBurner, all links pointing to http://example.com/feed/ can be changed to point to http://feeds.feedburner.com/Example.

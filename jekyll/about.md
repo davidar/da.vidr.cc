@@ -4,10 +4,10 @@ title: About
 tab: about
 ---
 
-#### Contact
+### Contact
 
-  * **Email:** <a href="mailto:&#100;&#064;&#118;&#105;&#100;&#114;&#046;&#099;&#099;">&#100;&#064;&#118;&#105;&#100;&#114;&#046;&#099;&#099;</a>
-  * **Jabber/GTalk:** &#100;&#064;&#118;&#105;&#100;&#114;&#046;&#099;&#099;
+  * **Email:** <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+  * **Jabber/GTalk:** {{ site.email }}
   * **IRC:** strebor@irc.[freenode.net][1]
   * **PGP/GPG:** [0xCE7553AD][2]
 

@@ -3,15 +3,12 @@ layout: project-page
 title: PixelStruct
 ---
 
-PixelStruct is an opensource tool for visualizing 3D scenes reconstructed from photographs.
+PixelStruct is an opensource tool for visualizing 3D scenes reconstructed from photographs. It uses the opensource structure-from-motion system [Bundler][1], which is based on the same research as [Microsoft Live Labs Photosynth][2].
 
-It uses the opensource structure-from-motion system [Bundler][1], which is based on the same research as [Microsoft Live Labs Photosynth][2].
+The following video shows a [715-image reconstruction][5] of Notre Dame Cathedral in Paris:
 
-The following video shows a [715-image reconstruction][5] of Notre Dame Cathedral in Paris.
-
-<div class="centred"><object type="application/x-shockwave-flash" style="width:425px; height:344px;" data="http://www.youtube.com/v/VFdNQc3gVkM">
-<param name="movie" value="http://www.youtube.com/v/VFdNQc3gVkM" />
-</object></div>
+{% assign youtube_video_id = "VFdNQc3gVkM" %}
+{% include youtube-embed.html %}
 
 ### Downloads
 

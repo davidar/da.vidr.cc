@@ -5,7 +5,8 @@ title: Datum
 
 Datum is a simple question answering system.
 
-An online interface is available [here][7].
+ - [Online interface][7]
+ - [Source code][1]
 
 Natural language parsing and
 generation is achieved through the use of templates. Fact retrieval and
@@ -19,8 +20,6 @@ Datum depends on the following libraries:
  - [DataNucleus][4]
  - [ANTLR v3][5]
  - [Apache Commons Lang][6]
-
-[Download][1]
 
  [1]: http://github.com/davidar/datum
  [2]: http://en.wikipedia.org/wiki/Datalog

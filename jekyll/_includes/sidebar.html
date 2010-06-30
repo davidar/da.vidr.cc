@@ -1,40 +1,17 @@
-<div class="sidebar">
-    <div class="panel">
-        <h4><span>Search</span></h4>
-        <!-- Google Custom Search Element -->
-        <div id="cse" style="width:100%">Loading...</div>
-    </div>
+<h3 class="alt">Search</h3>
+<!-- Google Custom Search Element -->
+<div id="cse" style="width:100%"><p>Loading...</p></div>
+<hr />
 
-    <div class="panel">
-        <h4><span>Random</span> Quote</h4>
-        <div id="quote"></div>
-    </div>
+<h3 class="alt">Random Quote</h3>
+<div id="quote"><p>Loading...</p></div>
+<hr />
 
-    <hr />
-    <div class="centred">
-        <!--Ad Bard advertisement snippet -->
-        <script type='text/javascript'>
-            var ab_h = 'dc99490b1d62d8112700c97fc221bf13';
-            var ab_s = '43ca54f35f57b3cfd01244855c0185be';
-        </script>
-        <script type='text/javascript' src='http://cdn1.adbard.net/js/ab1.js'></script>
-    </div>
-</div>
-
-<div class="sidebar">
-    <div class="panel">
-        <h4><span>Recent</span> Posts</h4>
-        <a href="http://feeds.da.vidr.cc/DavidRobertsBlog" title="RSS Feed for Blog Entries" class="feedlink"><span>RSS</span></a>
-        <ul class="links">
-            {% for post in site.posts limit:5 %}
-            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-
-    <div class="panel">
-        <h4><span>Recent</span> Comments</h4>
-        <a href="http://feeds.da.vidr.cc/DavidRobertsComments" title="RSS Feed for all Comments" class="feedlink"><span>RSS</span></a>
-        {% include disqus/recent-comments.html %}
-    </div>
+<div class="align-center">
+    <!--Ad Bard advertisement snippet -->
+    <script type='text/javascript'>
+        var ab_h = 'dc99490b1d62d8112700c97fc221bf13';
+        var ab_s = '43ca54f35f57b3cfd01244855c0185be';
+    </script>
+    <script type='text/javascript' src='http://cdn1.adbard.net/js/ab1.js'></script>
 </div>

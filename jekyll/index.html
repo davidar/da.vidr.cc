@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Home
-tab: blog
+tab: root
 head: |
     <link rel="openid.server" href="http://www.myopenid.com/server" />
     <link rel="openid.delegate" href="http://openid.da.vidr.cc/david" />
@@ -10,19 +9,24 @@ head: |
     <meta http-equiv="X-XRDS-Location" content="http://static.da.vidr.cc/xrds" />
 ---
 
-{% for page in paginator.posts %}
-<div class="post">
-    {% include post-header.html %}
-    {{ page.content }}
-</div>
-<br class="clear" />
+{% for post in paginator.posts %}
+<h2>{{ post.title }} <a href="{{ post.url }}">&raquo;</a></h2>
+{{ post.content }}
+<hr />
 {% endfor %}
 
-<div class="pagination"> 
+<div class="span-8 colborder align-center">
+    <p>
     {% if paginator.next_page %}
-    <div class="floatleft"><a href="/page{{ paginator.next_page }}/">&laquo; older entries</a></div>
+    <a href="/page{{ paginator.next_page }}/">&laquo; older entries</a>
     {% endif %}
-    {% if paginator.previous_page %}
-    <div class="floatright"><a href="/{% if paginator.previous_page != 1 %}page{{ paginator.previous_page }}/{% endif %}">newer entries &raquo;</a></div>
-    {% endif %}
+    </p>
 </div>
+<div class="span-8 last align-center">
+    <p>
+    {% if paginator.previous_page %}
+    <a href="/{% if paginator.previous_page != 1 %}page{{ paginator.previous_page }}/{% endif %}">newer entries &raquo;</a>
+    {% endif %}
+    </p>
+</div>
+<hr class="space" />

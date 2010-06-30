@@ -1,9 +1,11 @@
 pygments: true
 markdown: rdiscount
 permalink: pretty
-paginate: 5
+paginate: 3
 
 domain: da.vidr.cc
+author: David A Roberts
+email: &#100;&#064;&#118;&#105;&#100;&#114;&#046;&#099;&#099;
 
 disqus_shortname: davidar
 disqus_avatar_size: 32

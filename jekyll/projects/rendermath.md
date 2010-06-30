@@ -21,9 +21,9 @@ Render TeX-style math as HTML.
 
 Click on the math below to change it, hit enter or click elsewhere on the page to render it. HTML code for the math is displayed at the bottom of the page.
 
-<div class="centred">
+<div class="align-center">
     <div id="mathdisplay"></div>
-    <input id="mathinput" class="centred" type="text" size="40" value="e^{i\pi}+1=0" />
+    <input id="mathinput" class="align-center" type="text" size="40" value="e^{i\pi}+1=0" />
 </div>
 
 Download math as a single GIF image:

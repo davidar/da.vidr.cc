@@ -7,9 +7,7 @@ head: |
     <link type="text/css" rel="stylesheet" href="http://github.com/davidar/subleq/raw/master/jsubleq/jsubleq.css" />
 ---
 
-SUBLEQ (SUbtract and Branch if Less than or EQual to zero) is a type of OISC (One Instruction Set Computer) / URISC (Ultimate Reduced Instruction Set Computer) architecture.
-
-It has only one instruction of the form:
+SUBLEQ (SUbtract and Branch if Less than or EQual to zero) is a type of OISC (One Instruction Set Computer) / URISC (Ultimate Reduced Instruction Set Computer) architecture. It has only one instruction of the form:
 
     A B C
 
@@ -131,13 +129,12 @@ main(int C,char**A){FILE*F=fopen(A[1],"r");int P=0,_[9999],*i=_;while(fscanf(F,
 ?printf("%c",_[a]):(_[b]-=_[a])<=0?P=c:0;}}
 {% endhighlight %}
 
-It has been somewhat obfuscated to reduce
-the code size, so a more readable version is also [provided][12].
-
-It should function similarly to [sqrun][6].
+It has been somewhat obfuscated to reduce the code size, so a more readable version is also [provided][12]. It should function similarly to [sqrun][6].
 
 <a name="jsubleq"></a>
 ### JSubleq
+
+The following terminal demonstrates the JavaScript interpreter running the provided demo program:
 
 <div id="jsubleqcontainer" style="height:300px"></div>
 

@@ -42,16 +42,16 @@ head: |
 
 Compare colors for website designs.
 
-<table id="colorpick" class="centred">
-<tr id="colorpick-bg">    <th>Background</th><td><input id="color-bg"     name="color-bg"     size="13" type="text" value="#ffffff" /></td></tr>
-<tr id="colorpick-title"> <th>Title</th>     <td><input id="color-title"  name="color-title"  size="13" type="text" value="#000000" /></td></tr>
-<tr id="colorpick-text">  <th>Text</th>      <td><input id="color-text"   name="color-text"   size="13" type="text" value="#000000" /></td></tr>
-<tr id="colorpick-blocka"><th>Block A</th>   <td><input id="color-blocka" name="color-blocka" size="13" type="text" value="#dddddd" /></td></tr>
-<tr id="colorpick-blockb"><th>Block B</th>   <td><input id="color-blockb" name="color-blockb" size="13" type="text" value="#aaaaaa" /></td></tr>
-<tr><td colspan="2">Click on the above text fields to open <a href="http://www.eyecon.ro/colorpicker/">color picker</a>.</td></tr>
+<table id="colorpick">
+<tr id="colorpick-bg">     <th class="align-right">Background</th> <td><input id="color-bg"     name="color-bg"     size="13" type="text" value="#ffffff" /></td> </tr>
+<tr id="colorpick-title">  <th class="align-right">Title</th>      <td><input id="color-title"  name="color-title"  size="13" type="text" value="#000000" /></td> </tr>
+<tr id="colorpick-text">   <th class="align-right">Text</th>       <td><input id="color-text"   name="color-text"   size="13" type="text" value="#000000" /></td> </tr>
+<tr id="colorpick-blocka"> <th class="align-right">Block A</th>    <td><input id="color-blocka" name="color-blocka" size="13" type="text" value="#dddddd" /></td> </tr>
+<tr id="colorpick-blockb"> <th class="align-right">Block B</th>    <td><input id="color-blockb" name="color-blockb" size="13" type="text" value="#aaaaaa" /></td> </tr>
+<tr><td colspan="2" class="align-center">Click on the above text fields to open <a href="http://eyecon.ro/colorpicker/">color picker</a>.</td></tr>
 </table>
 
-<br />
+<hr />
 
 <div id="color-bg-div" class="bg">
     <div id="color-title-div" class="fg">Lorem Ipsum</div>

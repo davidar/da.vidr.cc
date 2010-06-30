@@ -1,10 +1,9 @@
 ---
 layout: default
-tab: blog
+tab: root
 ---
 
-<div class="post">
-    {% include post-header.html %}
-    {{ content }}
-</div>
+<h2>{{ page.title }}</h2>
+{{ content }}
+<hr />
 {% include disqus/comments.html %}

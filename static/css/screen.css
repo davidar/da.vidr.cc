@@ -1,0 +1,19 @@
+.align-left    { text-align: left; }
+.align-right   { text-align: right; }
+.align-center  { text-align: center; }
+.align-justify { text-align: justify; }
+
+.youtube-video      { width: 425px; height: 344px; }
+.google-docs-viewer { width: 600px; height: 780px; }
+
+pre {
+    margin-bottom: 1.5em;
+    color: #d0d0d0;
+    background-color: #202020;
+    overflow: auto;
+    padding: 5px;
+}
+
+img {
+    max-width: 100%;
+}

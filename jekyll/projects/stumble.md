@@ -3,8 +3,6 @@ layout: project-page
 title: Stumble
 ---
 
-Tools for interacting with StumbleUpon.
-
 Stumble currently provides two interfaces to [StumbleUpon][1]: 
 
   * **Stumble:** command-line interface to StumbleUpon
@@ -12,11 +10,7 @@ Stumble currently provides two interfaces to [StumbleUpon][1]:
 
 ### Requirements
 
-  * Perl, with: 
-
-    * Digest::SHA1 - `sudo aptitude install libdigest-sha1-perl` on Ubuntu/Debian; `emerge Digest-SHA1` on Gentoo
-    * LWP sudo aptitude install libwww-perl on Ubuntu/Debian
-
+  * Perl, with Digest::SHA1 (`sudo aptitude install libdigest-sha1-perl` on Ubuntu/Debian; `emerge Digest-SHA1` on Gentoo), and LWP (`sudo aptitude install libwww-perl` on Ubuntu/Debian)
   * KDE 3.5.x or 4.0.0 (for KStumble)
 
 **NB: If you have trouble extracting the 0.2 release, you may need to rename it from 'stumble-0.2.tar.gz' to 'stumble-0.2.tar'. Sorry about this.**

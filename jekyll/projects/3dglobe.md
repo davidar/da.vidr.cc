@@ -3,16 +3,11 @@ layout: project-page
 title: 3D Globe
 ---
 
+<img src="http://github.com/davidar/3dglobe/raw/master/screenshot.png" class="top right" alt="Screenshot" />
 3D Globe is a simple virtual globe viewer written in PHP.
 
-A live demo can be found [here][3].
+ - [Live Demo][1]
+ - [Source code][2]
 
-Example output is shown below:
-
-![screenshot][1]
-
-[Download from GitHub][2].
-
- [1]: http://github.com/davidar/3dglobe/raw/master/screenshot.png
+ [1]: http://php.da.vidr.cc/projects/3dglobe/
  [2]: http://github.com/davidar/3dglobe
- [3]: http://php.da.vidr.cc/projects/3dglobe/

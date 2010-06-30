@@ -10,3 +10,6 @@
 [submodule "submodules/blueprint-css"]
 	path = submodules/blueprint-css
 	url = git://github.com/joshuaclayton/blueprint-css.git
+[submodule "submodules/blueprint-tabs"]
+	path = submodules/blueprint-tabs
+	url = git://github.com/Montoya/blueprint-plugin---tabs.git

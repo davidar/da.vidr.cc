@@ -7,9 +7,8 @@ PixelStruct 0.2 has been released. This version has two main changes from the pr
 
 For more information, including download links, please see the [project homepage][1].
 
-<div class="centred"><object type="application/x-shockwave-flash" style="width:425px; height:344px;" data="http://www.youtube.com/v/VFdNQc3gVkM">
-<param name="movie" value="http://www.youtube.com/v/VFdNQc3gVkM" />
-</object></div>
+{% assign youtube_video_id = "VFdNQc3gVkM" %}
+{% include youtube-embed.html %}
 
  [1]: http://da.vidr.cc/projects/pixelstruct/
 

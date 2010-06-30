@@ -3,9 +3,7 @@ layout: project-page
 title: Headerlinks
 ---
 
-Headerlinks is a WordPress plugin that adds permalinks to the headers/headings on posts and pages.
-
-When the cursor hovers over a header, a pilcrow (&#182;) symbol appears to the right of the header to indicate the permalink.
+Headerlinks is a WordPress plugin that adds permalinks to the headers/headings on posts and pages. When the cursor hovers over a header, a pilcrow (&#182;) symbol appears to the right of the header to indicate the permalink.
 
 ### Screenshots
 
