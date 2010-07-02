@@ -12,7 +12,7 @@ Example permalink
 
 ### Installation
 
-  1. Download the plugin from the [project page on WordPress Extend][1]
+  1. Download the plugin from the [project page on WordPress Extend][2]
   2. Upload the `headerlinks/` directory to the `/wp-content/plugins/` directory
   3. Activate the plugin through the _Plugins_ menu in WordPress
 

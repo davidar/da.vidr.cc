@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head profile="http://www.w3.org/2005/10/profile">
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-        <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.author }}</title>
+        <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.author }}</title>
         {% include head.html %}
         {% if page.head %}{{ page.head }}{% endif %}
     </head>
@@ -22,7 +22,6 @@
             <hr />
             <div class="align-center">{% include footer.html %}</div>
         </div>
-        {% include disqus/num-replies.html %}
         {% include tracking.html %}
     </body>
 </html>

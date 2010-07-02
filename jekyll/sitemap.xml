@@ -3,38 +3,24 @@ layout: nil
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>http://{{ site.domain }}/</loc>
-        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
-    </url>
+    {% assign sitemap_loc = "/" %}
+    {% include sitemap-entry.xml %}
+
+    {% assign sitemap_loc = "/projects/" %}
+    {% include sitemap-entry.xml %}
+
+    {% assign sitemap_loc = "/about/" %}
+    {% include sitemap-entry.xml %}
+
     {% for post in site.posts %}
-    <url>
-        <loc>http://{{ site.domain }}{{ post.url }}</loc>
-        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
-    </url>
+        {% capture sitemap_loc %}{{ post.url }}{% endcapture %}
+        {% include sitemap-entry.xml %}
     {% endfor %}
-    <url>
-        <loc>http://{{ site.domain }}/projects/</loc>
-        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
-    </url>
+
     {% for page in site.pages %}
-    {% if page.layout == 'page' or page.layout == 'project-page' %}
-    <url>
-        {% if page.layout == 'page' %}
-        <loc>http://{{ site.domain }}{{ page.url }}</loc>
-        {% elsif page.layout == 'project-page' %}
-        <loc>http://{{ site.domain }}/projects{{ page.url }}</loc>
-        {% endif %}
-        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
-    </url>
+    {% if page.layout == 'project-page' %}
+        {% capture sitemap_loc %}/projects{{ page.url }}{% endcapture %}
+        {% include sitemap-entry.xml %}
     {% endif %}
     {% endfor %}
 </urlset>
