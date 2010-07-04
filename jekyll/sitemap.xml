@@ -3,24 +3,23 @@ layout: nil
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    {% assign sitemap_loc = "/" %}
-    {% include sitemap-entry.xml %}
-
-    {% assign sitemap_loc = "/projects/" %}
-    {% include sitemap-entry.xml %}
-
-    {% assign sitemap_loc = "/about/" %}
-    {% include sitemap-entry.xml %}
-
     {% for post in site.posts %}
-        {% capture sitemap_loc %}{{ post.url }}{% endcapture %}
-        {% include sitemap-entry.xml %}
+    <url>
+        <loc>http://{{ site.domain }}{{ post.url }}</loc>
+        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
     {% endfor %}
 
     {% for page in site.pages %}
-    {% if page.layout == 'project-page' %}
-        {% capture sitemap_loc %}/projects{{ page.url }}{% endcapture %}
-        {% include sitemap-entry.xml %}
-    {% endif %}
+    {% unless page.layout == "nil" %}
+    <url>
+        <loc>http://{{ site.domain }}{{ page.url | normalize_url }}</loc>
+        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    {% endunless %}
     {% endfor %}
 </urlset>
