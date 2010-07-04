@@ -19,6 +19,8 @@ handlers:
   script: zip/serve.py
 - url: /syntaxhighlighter/.*
   script: zip/serve.py
+- url: /inputlimiter/.*
+  script: zip/serve.py
 - url: /projects/lljvm/doc/.*
   script: zip/serve.py
 
