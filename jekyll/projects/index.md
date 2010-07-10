@@ -6,6 +6,7 @@ tab: projects
 
 ### 2010
 
+ * [iCCsh](/projects/iccsh/): interactive C Compiler shell.
  * [Datum](/projects/datum/): a simple question answering system.
  * [rtNEATbox](/projects/rtneatbox/): a simple neuro-evolution sandbox.
 
