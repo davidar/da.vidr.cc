@@ -23,11 +23,30 @@ entire C source file. An example session is shown below:
 >>> hello("world")
 :eval hello("world")
 Hello world!
->>> :i math.h
+>>> :i math
 >>> %f cos(M_PI/4)
 :printf %f cos(M_PI/4)
 0.707107
 {% endhighlight %}
+
+iCCsh can also interface with native libraries, such as Xlib (X11):
+
+{% highlight text %}
+>>> :i X11/Xlib
+>>> :l X11
+>>> :d display Display *display
+>>> display = XOpenDisplay("")
+>>> :d screen Screen *screen
+>>> screen = XScreenOfDisplay(display, 0)
+>>> :p width=%d\nheight=%d\ndepth=%d \
+...     screen->width, screen->height, screen->root_depth
+width=1280
+height=800
+depth=24
+>>> XCloseDisplay(display)
+{% endhighlight %}
+
+### Links
 
  - [Download][1]
  - Powered by [TinyCC][2]
