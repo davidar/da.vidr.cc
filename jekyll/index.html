@@ -11,7 +11,7 @@ head: |
 
 {% for post in paginator.posts %}
 <h2>{{ post.title }} <a href="{{ post.url }}">&raquo;</a></h2>
-{{ post.content }}
+{{ post.content | summarize_post }}
 <hr />
 {% endfor %}
 
