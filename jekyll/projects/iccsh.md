@@ -32,6 +32,7 @@ Hello world!
 iCCsh can also interface with native libraries, such as Xlib (X11):
 
 {% highlight text %}
+>>> :sandbox off
 >>> :i X11/Xlib
 >>> :l X11
 >>> :d display Display *display
@@ -48,8 +49,12 @@ depth=24
 
 ### Links
 
- - [Download][1]
- - Powered by [TinyCC][2]
+ - [iCCsh 0.1][3]
+ - [Git repository][1]
+ - Powered by [TinyCC (TCC)][2]
+
+*Note: `texi2html` must be installed for TCC to compile*
 
  [1]: http://github.com/davidar/iccsh
  [2]: http://bellard.org/tcc/
+ [3]: http://github.com/downloads/davidar/iccsh/iccsh-0.1.tar.gz
