@@ -52,9 +52,11 @@ depth=24
  - [iCCsh 0.1][3]
  - [Git repository][1]
  - Powered by [TinyCC (TCC)][2]
+ - See also [CINT][4] C/C++ interpreter
 
 *Note: `texi2html` must be installed for TCC to compile*
 
  [1]: http://github.com/davidar/iccsh
  [2]: http://bellard.org/tcc/
  [3]: http://github.com/downloads/davidar/iccsh/iccsh-0.1.tar.gz
+ [4]: http://root.cern.ch/drupal/content/cint
