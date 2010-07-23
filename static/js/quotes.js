@@ -41,6 +41,8 @@ var quotes = [
      'Kansas Legislature', 'http://en.wikipedia.org/wiki/Deadlock'],
     ['Nature is nowhere accustomed more openly to display her secret mysteries than in cases where she shows traces of her workings apart from the beaten path.',
      'William Harvey', 'http://en.wikisource.org/wiki/Page:The_Works_of_William_Harvey_%28part_2_of_2%29.djvu/98'],
+    ['Any sufficiently advanced technology is indistinguishable from magic.',
+     'Arthur C. Clarke', 'http://groups.google.com/group/rec.arts.sf.misc/msg/e4185210a85826fc'],
 ];
 
 $(document).ready(function() {
