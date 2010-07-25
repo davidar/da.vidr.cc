@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!-- http://code.google.com/appengine/docs/java/tools/ant.html -->
-<project>
+<project default="compile">
     <property name="sdk.dir" location="../appengine-java-sdk" />
     <import file="${sdk.dir}/config/user/ant-macros.xml" />
 
