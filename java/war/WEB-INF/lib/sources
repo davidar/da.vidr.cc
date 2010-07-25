@@ -11,3 +11,4 @@ joda-time-1.6.jar from http://prdownloads.sourceforge.net/project/joda-time/joda
 lib/resin.jar (rename to resin-4.0.0.jar) from http://caucho.com/download/resin-4.0.0.tar.gz
 core/target/commons-jci-core-1.1-SNAPSHOT.jar and compilers/eclipse/target/commons-jci-eclipse-1.1-SNAPSHOT.jar from the development version of JCI
     see http://commons.apache.org/jci/source-repository.html and http://svn.apache.org/viewvc/commons/proper/jci/trunk/README.txt?view=markup
+stanford-parser-2010-07-09.jar from http://nlp.stanford.edu/software/stanford-parser-2010-07-09.tgz

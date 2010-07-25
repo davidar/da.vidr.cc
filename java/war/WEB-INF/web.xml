@@ -51,6 +51,15 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>ParseViz</servlet-name>
+        <servlet-class>cc.vidr.parseviz.ParseVizServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ParseViz</servlet-name>
+        <url-pattern>/projects/parseviz/</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>Bsh</servlet-name>
         <servlet-class>bsh.servlet.BshServlet</servlet-class>
     </servlet>

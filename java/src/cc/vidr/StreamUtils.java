@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009  David Roberts <d@vidr.cc>
+ * Copyright (C) 2009-2010  David A Roberts <d@vidr.cc>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -17,40 +17,24 @@
 
 package cc.vidr;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.io.Writer;
 
 public final class StreamUtils {
+    private static final int BUF_SIZE = 8192;
+
     private StreamUtils() {}
     
-    public static void pipe(PrintWriter dest, InputStream src)
+    public static void copyStream(InputStream in, OutputStream out)
     throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(src));
-        String line;
-        while((line = reader.readLine()) != null)
-            dest.println(line);
-    }
-    
-    public static void pipe(OutputStream dest, InputStream src)
-    throws IOException {
-        pipe(new PrintWriter(dest), src);
-    }
-    
-    public static void pipe(Writer dest, InputStream src)
-    throws IOException {
-        pipe(new PrintWriter(dest), src);
-    }
-    
-    public static String readAll(InputStream src)
-    throws IOException {
-        StringWriter writer = new StringWriter();
-        pipe(writer, src);
-        return writer.toString();
+        byte[] buf = new byte[BUF_SIZE];
+        int len;
+        try {
+            while((len = in.read(buf)) > 0)
+                out.write(buf, 0, len);
+        } finally {
+            in.close();
+        }
     }
 }

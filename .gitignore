@@ -1,5 +1,7 @@
 TODO
 scrap/
+Session.vim
 *~
+*.swp
 google_appengine/
 appengine-java-sdk/
