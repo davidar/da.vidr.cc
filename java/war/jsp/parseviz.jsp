@@ -12,6 +12,10 @@
     import="cc.vidr.parseviz.ParseViz"
 %>
 
+<p><a href="http://da.vidr.cc/projects/parseviz/">ParseViz</a>
+creates visualisations of the parse trees created by the
+<a href="http://nlp.stanford.edu/software/lex-parser.shtml">Stanford Parser</a>.</p>
+
 <%
 String s = request.getParameter("q");
 if(s == null)
@@ -34,6 +38,7 @@ Tree tree = ParseViz.parse(s);
     <img src="?type=tree&amp;format=png&amp;q=<%=q%>"
         style="max-width:100%" alt="Parse Tree" />
 </a>
+<p><a href="?type=tree&amp;format=dot&amp;q=<%=q%>">DOT source</a></p>
 
 <h2>Stanford Dependencies</h2>
 <pre><% ParseViz.printDependencies(tree, out); %></pre>
@@ -41,5 +46,6 @@ Tree tree = ParseViz.parse(s);
     <img src="?type=deps&amp;format=png&amp;q=<%=q%>"
         style="max-width:100%" alt="Stanford Dependencies" />
 </a>
+<p><a href="?type=deps&amp;format=dot&amp;q=<%=q%>">DOT source</a></p>
 
 <jsp:include page="footer.jsp" />
