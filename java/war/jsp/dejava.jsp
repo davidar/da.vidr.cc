@@ -1,5 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<jsp:include page="header.jsp">
+    <jsp:param name="title" value="DejaVa" />
+</jsp:include>
 
 <%@ page
     language="java"
@@ -13,19 +14,7 @@
     import="org.apache.commons.jci.problems.*"
 %>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-<title>DejaVa</title>
-<link rel="stylesheet" href="http://static.da.vidr.cc/css/blueprint/screen.css" type="text/css" media="screen, projection" />
-<link rel="stylesheet" href="http://static.da.vidr.cc/css/blueprint/print.css" type="text/css" media="print" />    
-<!--[if lt IE 8]><link rel="stylesheet" href="http://static.da.vidr.cc/css/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->
-</head>
-<body>
-<div class="container">
-
-<h1>DejaVa</h1>
-<p>DejaVa compiles Java source code to JVM bytecode, then disassembles it to Jasmin assembly code.</p>
+<p><a href="http://da.vidr.cc/projects/dejava/">DejaVa</a> compiles Java source code to JVM bytecode, then disassembles it to Jasmin assembly code.</p>
 <p>Powered by:</p>
 <ul>
 <li><a href="http://commons.apache.org/jci/">JCI</a></li>
@@ -168,13 +157,4 @@ if(request.getMethod().equals("POST")) {
 </fieldset>
 </form>
 
-<p>
-&copy; 2009&ndash;2010
-<a href="mailto:&#100;&#064;&#118;&#105;&#100;&#114;&#046;&#099;&#099;">
-David Roberts</a>.
-<a href="http://da.vidr.cc/projects/dejava/">Project page</a>.
-</p>
-
-</div>
-</body>
-</html>
+<jsp:include page="footer.jsp" />
